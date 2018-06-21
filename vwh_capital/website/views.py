@@ -6,5 +6,18 @@ from django.http import Http404, HttpRequest, HttpResponse
 # from vwh_capital.website.models import *
 
 
-def index(request):
+def properties(request):
     return render(request, 'website/properties.html')
+
+
+def details(request):
+    return render(request, 'website/details.html')
+
+
+def favourite(request):
+    return render(request, 'website/favourite.html')
+
+
+def home(request):
+    return render(request, 'website/home.html')
+
