@@ -19,5 +19,5 @@ def favourite(request):
 
 
 def home(request):
-    return render(request, 'website/home.html')
+    return render(request, 'website/index.html')
 
