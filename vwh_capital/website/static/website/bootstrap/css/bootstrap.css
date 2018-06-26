@@ -3842,6 +3842,8 @@ input[type="button"].btn-block {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
+  font-size: 20px;
+
 }
 
 .nav-link:hover, .nav-link:focus {
@@ -4287,15 +4289,15 @@ input[type="button"].btn-block {
 }
 
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
-  color: #fff;
+  color: rgba(0, 51, 204, 0.75);
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.5);
+  color: #002053;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(0, 51, 204, 0.75);
 }
 
 .navbar-dark .navbar-nav .nav-link.disabled {
@@ -4306,7 +4308,7 @@ input[type="button"].btn-block {
 .navbar-dark .navbar-nav .active > .nav-link,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active {
-  color: #fff;
+ color: rgba(0, 51, 204, 0.75);
 }
 
 .navbar-dark .navbar-toggler {

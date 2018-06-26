@@ -1,6 +1,7 @@
 {% extends "website/base.html" %}
 {% block content %}
 {% load staticfiles %}
+<div style="height:80px;"></div>
     <header>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -10,24 +11,25 @@
         </ol>
         <div class="carousel-inner" role="listbox">
           <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
+          <!--<div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">-->
+          <div class="carousel-item active" style="background-color: #002053">
+             <img class="front" src="{% static 'pictures/demo1.png' %}" >
             <div class="carousel-caption d-none d-md-block">
-              <h3>First Slide</h3>
-              <p>This is a description for the first slide.</p>
+              <h4>8521 Wolf Den Trl, Port Richey, FL 34668</h4>
             </div>
           </div>
           <!-- Slide Two - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+          <div class="carousel-item" style="background-color: #002053">
+            <img class="front" src="{% static 'pictures/demo2.png' %}" >
             <div class="carousel-caption d-none d-md-block">
-              <h3>Second Slide</h3>
-              <p>This is a description for the second slide.</p>
+              <h4>5736 102nd Ave, Pinellas Park, FL 33782</h4>
             </div>
           </div>
           <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+          <div class="carousel-item" style="background-color: #002053">
+            <img class="front" src="{% static 'pictures/demo3.png' %}" >
             <div class="carousel-caption d-none d-md-block">
-              <h3>Third Slide</h3>
-              <p>This is a description for the third slide.</p>
+              <h4>5129 Abbott Ave, Columbus, GA 31904</h4>
             </div>
           </div>
         </div>
@@ -45,7 +47,7 @@
     <!-- Page Content -->
     <div class="container">
 
-      <h1 class="my-4">Welcome to Modern Business</h1>
+      <h1 class="my-4" style="color: #002053">Welcome to VWH Capital Properties</h1>
 
       <!-- Marketing Icons Section -->
       <div class="row">
