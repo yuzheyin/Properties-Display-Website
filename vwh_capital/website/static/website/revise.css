@@ -5,7 +5,11 @@
 }
 
 .front{
-    height:100%;
-    width:100%;
-    object-fit:contain;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.form-group{
+    margin-top:20px;
 }

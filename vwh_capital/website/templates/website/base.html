@@ -11,7 +11,7 @@
     <title>VWH Properties</title>
 
     <!-- Bootstrap core CSS -->
-    <!--<link href="{% static 'website/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">-->
+      <link href="{% static 'website/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
       <link href="{% static 'website/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
 
 
@@ -29,13 +29,13 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
-
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap-select.min.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/normalize.css' %}">
-        <!--<link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">-->
+        <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/fontello.css' %}">
         <link href="{% static 'assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css' %}" rel="stylesheet">
         <link href="{% static 'assets/fonts/icon-7-stroke/css/helper.css' %}" rel="stylesheet">
-        <!--<link href="{% static 'assets/css/animate.css' %}" rel="stylesheet" media="screen">-->
+        <link href="{% static 'assets/css/animate.css' %}" rel="stylesheet" media="screen">
        <link rel="stylesheet" href="{% static 'assets/css/icheck.min_all.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/price-range.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}">
@@ -44,6 +44,9 @@
         <link rel="stylesheet" href="{% static 'assets/css/lightslider.min.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+
+
+        <!--<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">-->
 
 
   </head>
@@ -62,10 +65,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="{% url 'index' %}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="services.html">Services</a>
+              <a class="nav-link" href="http://www.vwhcapital.com/">About</a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="{% url 'properties' %}" id="navbarDropdownPortfolio" >
@@ -101,8 +104,8 @@
         </div>
       </div>
       <div class="button-nav" style="margin-right:20px;">
-          <button type="button" class="btn btn-primary btn-lg">Login</button>
-          <button type="button" class="btn btn-dark btn-lg">sign up</button>
+          <a href="{% url 'login' %}"><button type="button" class="btn btn-primary btn-lg ">Login</button></a>
+          <a href="{% url 'signup' %}"><button type="button" class="btn btn-dark btn-lg ">sign up</button></a>
       </div>
     </nav>
     {% block content %}
@@ -121,6 +124,26 @@
     <script src="{% static 'website/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'website/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
+
+    <script src="{% static 'assets/js/modernizr-2.6.2.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-1.10.2.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-hover-dropdown.js' %}"></script>
+    <script src="{% static 'assets/js/easypiechart.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.easypiechart.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/wow.js' %}"></script>
+    <script src="{% static 'assets/js/icheck.min.js' %}"></script>
+    <script src="{% static 'assets/js/price-range.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
   </body>
 
 </html>
