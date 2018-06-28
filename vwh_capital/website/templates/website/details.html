@@ -93,7 +93,7 @@
               <div class="row">
 
                 <div class="col-md-8">
-                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="background-color: #002053">
+                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="background-image: linear-gradient(180deg,#002053 0%,#2B4C87 100%) !important;">
                     <ol class="carousel-indicators">
                       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -163,7 +163,7 @@
                 <!--Map-->
             <div class="single-property-header" style="margin-top:50px;">
               <h1 class="property-title ">View on Google Map </h1>
-                <div id="map" style="height:500px;width:1200px;margin-left: auto;margin-right: auto;"></div>
+                <div id="map" style="height:400px;width:1200px;margin-left: auto;margin-right: auto;"></div>
             </div>
 
                 <!-- details -->
@@ -311,25 +311,19 @@
 
                 <div class="col-md-3 col-sm-6 mb-4">
                   <a href="#">
-                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                    <img class="img-fluid" src="{% static 'pictures/demo3.png' %}" alt="">
                   </a>
                 </div>
 
                 <div class="col-md-3 col-sm-6 mb-4">
                   <a href="#">
-                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                    <img class="img-fluid" src="{% static 'pictures/demo2.png' %}" alt="">
                   </a>
                 </div>
 
                 <div class="col-md-3 col-sm-6 mb-4">
                   <a href="#">
-                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-                  </a>
-                </div>
-
-                <div class="col-md-3 col-sm-6 mb-4">
-                  <a href="#">
-                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                    <img class="img-fluid" src="{% static 'pictures/demo1.png' %}" alt="">
                   </a>
                 </div>
 
@@ -345,22 +339,22 @@
     </div>
 
 <script>
-var addressesArray = [
-'8521 Wolf Den Trl, Port Richey, FL 34668',
-//follow this structure
-]
+    var addressesArray = [
+    '8521 Wolf Den Trl, Port Richey, FL 34668',
+    //follow this structure
+    ]
 
-    function initMap() {
-        $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address='+addressesArray+'&key=AIzaSyBSMabzaPmRAMk8G4XP0DhSlASFpgNAmDU', null, function (data) {
-        var p = data.results[0].geometry.location;
-        var target= new google.maps.LatLng(p.lat, p.lng);
+        function initMap() {
+            $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address='+addressesArray+'&key=AIzaSyBSMabzaPmRAMk8G4XP0DhSlASFpgNAmDU', null, function (data) {
+            var p = data.results[0].geometry.location;
+            var target= new google.maps.LatLng(p.lat, p.lng);
 
-      var map = new google.maps.Map(
-          document.getElementById('map'), {zoom: 6, center: target});
+          var map = new google.maps.Map(
+              document.getElementById('map'), {zoom: 6, center: target});
 
-      var marker = new google.maps.Marker({position: target, map: map});
-      });
-    }
+          var marker = new google.maps.Marker({position: target, map: map});
+          });
+        }
 
 </script>
 

@@ -93,7 +93,7 @@
       <div class="row">
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <a href="#"><img class="card-img-top" src="{% static 'pictures/demo1.png' %}" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
                 <a href="#">Project One</a>
@@ -104,7 +104,7 @@
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <a href="#"><img class="card-img-top" src="{% static 'pictures/demo2.png' %}" alt=""></a>
             <div class=s"card-body">
               <h4 class="card-title">
                 <a href="#">Project Two</a>
@@ -115,7 +115,7 @@
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <a href="#"><img class="card-img-top" src="{% static 'pictures/demo3.png' %}" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
                 <a href="#">Project Three</a>
@@ -124,39 +124,39 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project Four</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project Five</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project Six</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
-            </div>
-          </div>
-        </div>
+        <!--<div class="col-lg-4 col-sm-6 portfolio-item">-->
+          <!--<div class="card h-100">-->
+            <!--<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>-->
+            <!--<div class="card-body">-->
+              <!--<h4 class="card-title">-->
+                <!--<a href="#">Project Four</a>-->
+              <!--</h4>-->
+              <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-lg-4 col-sm-6 portfolio-item">-->
+          <!--<div class="card h-100">-->
+            <!--<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>-->
+            <!--<div class="card-body">-->
+              <!--<h4 class="card-title">-->
+                <!--<a href="#">Project Five</a>-->
+              <!--</h4>-->
+              <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-lg-4 col-sm-6 portfolio-item">-->
+          <!--<div class="card h-100">-->
+            <!--<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>-->
+            <!--<div class="card-body">-->
+              <!--<h4 class="card-title">-->
+                <!--<a href="#">Project Six</a>-->
+              <!--</h4>-->
+              <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
       </div>
       <!-- /.row -->
 
@@ -177,7 +177,8 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
         </div>
         <div class="col-lg-6">
-          <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+          <!--<img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">-->
+            <div id="map" style="height:500px;width:450px;margin-left: auto;margin-right: auto;"></div>
         </div>
       </div>
       <!-- /.row -->
@@ -196,4 +197,28 @@
 
     </div>
     <!-- /.container -->
+    <script>
+        var addressesArray = [
+        '650 Fifth Avenue, New York, NY 10019',
+        //follow this structure
+        ]
+
+            function initMap() {
+                $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address='+addressesArray+'&key=AIzaSyBSMabzaPmRAMk8G4XP0DhSlASFpgNAmDU', null, function (data) {
+                var p = data.results[0].geometry.location;
+                var target= new google.maps.LatLng(p.lat, p.lng);
+
+              var map = new google.maps.Map(
+                  document.getElementById('map'), {zoom: 12, center: target});
+
+              var marker = new google.maps.Marker({position: target, map: map});
+              });
+            }
+
+    </script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSMabzaPmRAMk8G4XP0DhSlASFpgNAmDU&callback=initMap">
+    </script>
+
 {% endblock %}
