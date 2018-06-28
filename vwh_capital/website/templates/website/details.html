@@ -159,14 +159,21 @@
               </div>
               <!-- /.row -->
 
-              <!-- details -->
 
+                <!--Map-->
             <div class="single-property-header" style="margin-top:50px;">
-                <h1 class="property-title pull-left">Villa in Coral Gables</h1>
+              <h1 class="property-title ">View on Google Map </h1>
+                <div id="map" style="height:500px;width:1200px;margin-left: auto;margin-right: auto;"></div>
+            </div>
+
+                <!-- details -->
+            <div class="single-property-header" style="margin-top:50px;">
+                <h1 class="property-title pull-left">VWH Price</h1>
                 <span class="property-price pull-right">$131,000</span>
             </div>
 
-            <div style="margin-top:30px;">
+            <div class="single-property-header" style="margin-top:30px;">
+                <h1 class="property-title " style="margin:20px 0px 50px;">Facts and Features </h1>
                 <div class="row">
                     <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
                         <span class="property-info-icon icon-tag">
@@ -336,5 +343,30 @@
         <!-- /#page-content-wrapper -->
 
     </div>
+
+<script>
+var addressesArray = [
+'8521 Wolf Den Trl, Port Richey, FL 34668',
+//follow this structure
+]
+
+    function initMap() {
+        $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address='+addressesArray+'&key=AIzaSyBSMabzaPmRAMk8G4XP0DhSlASFpgNAmDU', null, function (data) {
+        var p = data.results[0].geometry.location;
+        var target= new google.maps.LatLng(p.lat, p.lng);
+
+      var map = new google.maps.Map(
+          document.getElementById('map'), {zoom: 6, center: target});
+
+      var marker = new google.maps.Marker({position: target, map: map});
+      });
+    }
+
+</script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSMabzaPmRAMk8G4XP0DhSlASFpgNAmDU&callback=initMap">
+</script>
+
 
 {% endblock %}
