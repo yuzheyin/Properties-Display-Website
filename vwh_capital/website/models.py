@@ -3,18 +3,19 @@ from django.contrib.auth.models import User
 from .choices import *
 
 
-class State(models.Model):
-    name = models.CharField(max_length=165, blank=True, choices=STATE_CHOICES)
-    code = models.CharField(max_length=3, blank=True)
-
-    def to_str(self):
-        return '%s' % (self.name or self.code)
+# class State(models.Model):
+#     name = models.CharField(max_length=165, blank=True, choices=STATE_CHOICES)
+#     code = models.CharField(max_length=3, blank=True)
+#
+#     def to_str(self):
+#         return '%s' % (self.name or self.code)
 
 
 class Locality(models.Model):
     city = models.CharField(max_length=165, blank=True)
     postal_code = models.CharField(max_length=10, blank=True)
-    state = models.ForeignKey(State, on_delete=models.CASCADE, related_name='localities')
+    # state = models.ForeignKey(State, on_delete=models.CASCADE, related_name='localities')
+    state = models.CharField(max_length=20, choices=STATE_CHOICES, default='NA')
 
     class Meta:
         verbose_name_plural = 'Localities'
@@ -65,27 +66,38 @@ class Address(models.Model):
             longitude=self.longitude if self.longitude else '',
         )
         if self.locality:
-            ad['locality'] = self.locality.name
+            ad['locality'] = self.locality.city
             ad['postal_code'] = self.locality.postal_code
             if self.locality.state:
-                ad['state'] = self.locality.state.name
-                ad['state_code'] = self.locality.state.code
+                ad['state'] = self.locality.state
+                # ad['state_code'] = self.locality.state.code
                 if self.locality.state.country:
                     ad['country'] = self.locality.state.country.name
                     ad['country_code'] = self.locality.state.country.code
         return ad
 
 
+class Picture(models.Model):
+    image = models.FileField(blank=True)
+    title = models.CharField(max_length=100, blank=True)
+    intro = models.TextField(max_length=300, blank=True)
+    # property = models.ForeignKey(Property, on_delete=models.CASCADE)
+
+    def __unicode__(self):
+        return 'Picture(id=' + str(self.id) + ')'
+
+
 # Property Model
 class Property(models.Model):
     creation_time = models.DateTimeField()
     last_changed = models.DateTimeField()
-    address = models.ForeignKey(Address, on_delete=models.CASCADE, blank=True)
+    pictures = models.ManyToManyField(Picture, related_name="pics_belongs_to", blank=True)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
     loan_id = models.CharField(max_length=50, default='NA')
     property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES, blank=True)
-    age = models.CharField(max_length=10, blank=True, default='NA')
-    description = models.CharField(max_length=500, blank=True)
-    favorite_by = models.ManyToManyField(User, related_name="prop_favorite_by")
+    age = models.IntegerField(default=0)
+    description = models.TextField(max_length=1000, blank=True)
+    favorite_by = models.ManyToManyField(User, related_name="prop_favorite_by", blank=True)
     likes = models.IntegerField(default=0)
     size = models.FloatField(default=0)
     lot_size = models.FloatField(default=0)
@@ -102,15 +114,6 @@ class Property(models.Model):
 
     def __unicode__(self):
         return 'Property(id=' + str(self.id) + ')'
-
-
-class Picture(models.Model):
-    image = models.FileField(blank=True, default='default.jpg')
-    title = models.CharField(max_length=100, blank=True)
-    property = models.ForeignKey(Property, on_delete=models.CASCADE)
-
-    def __unicode__(self):
-        return 'Picture(id=' + str(self.id) + ')'
 
 
 # Profile Model

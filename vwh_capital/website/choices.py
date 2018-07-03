@@ -15,3 +15,5 @@ STATE_CHOICES = (('AL', 'Alabama'), ('AK', 'Alaska'), ('AS', 'American Samoa'), 
 
 PROPERTY_TYPE_CHOICES = (('1', 'SFR'), ('2', 'CONDO'), ('3', 'COOP'), ('4', '2-4 Units'), ('5', 'Townhouse'), ('6', 'PUD'),
                          ('7', '5+ Units'), ('M', 'Manufactured Hsng'), ('Z', 'Other'))
+
+CITY_CHOICES = (('1', 'New York City'), ('2', 'Orlando'), ('3', 'Miami'), ('4', 'Los Angeles'), ('5', 'Washington DC'))

@@ -10,6 +10,7 @@ from django.core.mail import send_mail
 from .forms import *
 from .models import *
 from django.db import transaction
+from django.db.models import Q
 from django.urls import reverse
 from django.apps import apps
 from django.core.exceptions import ObjectDoesNotExist
@@ -91,57 +92,26 @@ def confirm_registration(request, username, token):
     return render(request, 'website/index.html', {})
 
 
-@login_required
-def contact(request):
-    if request.method == 'GET':
-        return render(request, 'website/contact.html')
-    userName=request.user.username
-    email_body = """
-    User {user} sent you an email, here is the message:
-    {message}
-    and user's email: {email}
-    """.format(user=request.user,
-               message=request.POST['message'],
-               email=request.user.email)
 
-    send_mail(subject="Message from customer "+userName,
-              message=email_body,
-              from_email="yuzhe.yin@vwhcapital.com",
-              recipient_list=["yuzhe.yin@vwhcapital.com"])
-    context={}
-    context['success'] = "Your email has been successfully sent! We will contact you soon!"
-    return render(request, 'website/contact.html', context)
-
-
-def login(request):
-    if request.method == 'GET':
-        return render(request, 'website/login.html')
-    username = request.POST.get('username')
-    password = request.POST.get('password')
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return render(request, 'website/index.html')
-    else:
-        errors = {'Invalid username or password, please try again'}
-        return render(request, 'website/login.html', {'errors': errors})
-
-
+@transaction.atomic
 def properties(request):
+    properties = Property.objects.order_by('-creation_time')
+    form = FilterForm()
+
     return render(request, 'website/properties.html')
 
 
-def details(request):
+@login_required
+@transaction.atomic
+def details(request, id):
     return render(request, 'website/details.html')
-
-
-def favourite(request):
-    return render(request, 'website/favorite.html')
 
 
 def home(request):
     return render(request, 'website/index.html')
 
 
+@login_required
+@transaction.atomic
 def favorite(request):
     return render(request, 'website/favorite.html')

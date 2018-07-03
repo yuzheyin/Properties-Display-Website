@@ -50,3 +50,9 @@ class RegistrationForm(forms.Form):
         # We must return the cleaned data we got from the cleaned_data
         # dictionary
         return username
+
+
+class FilterForm(forms.Form):
+    keyword = forms.CharField(max_length=100, label="Keyword")
+    city = forms.ChoiceField(choices=CITY_CHOICES, label="City", required=False)
+    state = forms.ChoiceField(choices=STATE_CHOICES, label="State", required=False)
