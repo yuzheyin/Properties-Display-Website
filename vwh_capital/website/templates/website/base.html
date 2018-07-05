@@ -36,21 +36,23 @@
         <link href="{% static 'assets/fonts/icon-7-stroke/css/helper.css' %}" rel="stylesheet">
         <link href="{% static 'assets/css/animate.css' %}" rel="stylesheet" media="screen">
        <link rel="stylesheet" href="{% static 'assets/css/icheck.min_all.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/price-range.css' %}">
+        <!--<link rel="stylesheet" href="{% static 'assets/css/price-range.css' %}">-->
         <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/owl.theme.css' %}">
+        <!--<link rel="stylesheet" href="{% static 'assets/css/owl.theme.css' %}">-->
         <link rel="stylesheet" href="{% static 'assets/css/owl.transitions.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/lightslider.min.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
 
+        <link rel="stylesheet" href="{% static 'website/style.css' %}">
+      <link rel="stylesheet" href="{% static 'website/plugins.css' %}">
 
         <!--<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">-->
 
 
   </head>
 
-  <body>
+  <body style="background-color:#f6f6f6;">
 
  <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light fixed-top">
@@ -144,7 +146,10 @@
     <script src="{% static 'assets/js/icheck.min.js' %}"></script>
     <script src="{% static 'assets/js/price-range.js' %}"></script>
     <script src="{% static 'assets/js/main.js' %}"></script>
-    <!-- Menu Toggle Script -->
+
+    <script src="{% static 'custom.js' %}"></script>
+    <script src="{% static 'plugins.js' %}"></script>
+ <!-- Menu Toggle Script -->
     <script>
         $("#menu-toggle").click(function(e) {
             e.preventDefault();

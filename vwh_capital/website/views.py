@@ -103,7 +103,7 @@ def properties(request):
 
 @login_required
 @transaction.atomic
-def details(request, id):
+def details(request):
     return render(request, 'website/details.html')
 
 
