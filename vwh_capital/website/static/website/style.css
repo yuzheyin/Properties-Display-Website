@@ -4251,7 +4251,7 @@ textarea {
 }
 .listing-search {
   padding: 10px 15px 0;
-  background-color: #002053;
+  background-image: linear-gradient(180deg,#002053 0%,#2B4C87 100%) !important;
 }
 .listing-search__label {
   display: block;

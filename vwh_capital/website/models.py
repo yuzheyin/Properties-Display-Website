@@ -24,7 +24,7 @@ class Locality(models.Model):
 
     def __str__(self):
         txt = '%s' % self.city
-        state = self.state.to_str() if self.state else ''
+        state = self.state if self.state else ''
         if txt and state:
             txt += ', '
         txt += state

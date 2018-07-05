@@ -97,8 +97,9 @@ def confirm_registration(request, username, token):
 def properties(request):
     properties = Property.objects.order_by('-creation_time')
     form = FilterForm()
+    context = {'properties': properties, 'form': form}
 
-    return render(request, 'website/properties.html')
+    return render(request, 'website/properties.html', context)
 
 
 @login_required
@@ -115,3 +116,16 @@ def home(request):
 @transaction.atomic
 def favorite(request):
     return render(request, 'website/favorite.html')
+
+@transaction.atomic
+def get_picture(request, id):
+    property = get_object_or_404(Property, id=id)
+    pictures = property.pictures.all()
+    picture = 0
+    for pic in pictures:
+        if pic.title == 'main':
+            picture = pic.image
+            break
+    # picture = Picture.objects.filter(id=id).image
+    return HttpResponse(picture, content_type='image/png')
+
