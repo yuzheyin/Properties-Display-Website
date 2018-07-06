@@ -104,8 +104,11 @@ def properties(request):
 
 @login_required
 @transaction.atomic
-def details(request):
-    return render(request, 'website/details.html')
+def details(request, id):
+    property = Property.objects.get(id=id)
+    pictures = property.pictures.all()
+    context = {'property': property, 'pictures': pictures}
+    return render(request, 'website/details.html', context)
 
 
 def home(request):
@@ -118,7 +121,7 @@ def favorite(request):
     return render(request, 'website/favorite.html')
 
 @transaction.atomic
-def get_picture(request, id):
+def get_main_picture(request, id):
     property = get_object_or_404(Property, id=id)
     pictures = property.pictures.all()
     picture = 0
@@ -129,3 +132,10 @@ def get_picture(request, id):
     # picture = Picture.objects.filter(id=id).image
     return HttpResponse(picture, content_type='image/png')
 
+
+@transaction.atomic
+def get_picture(request, id):
+    picture = get_object_or_404(Picture, id=id)
+    image = picture.image
+
+    return HttpResponse(image, content_type='image/png')

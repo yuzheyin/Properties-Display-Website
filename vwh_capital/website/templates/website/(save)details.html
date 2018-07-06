@@ -2,7 +2,6 @@
 {% block content %}
 {% load staticfiles %}
 <div style="height:80px;"></div>
-<div id="address" hidden>{{property.address}}</div>
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -86,15 +85,15 @@
             <div class="container">
 
               <!-- Portfolio Item Heading -->
-              <h1 class="my-4" style="color:#002053">{{property.address.street_number}} {{property.address.route}} {{property.address.locality.city}}, {{property.address.locality.state}}
+              <h2 class="my-4" style="color:#002053">{{property.address.street_number}} {{property.address.route}} {{property.address.locality.city}}, {{property.address.locality.state}}
                 <small>{{property.address.locality.postal_code}}</small>
-              </h1>
+              </h2>
 
               <!-- Portfolio Item Row -->
               <div class="row">
 
                 <div class="col-md-8">
-                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="background:#002053">
+                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="background-image: linear-gradient(180deg,#002053 0%,#2B4C87 100%) !important;">
                     <ol class="carousel-indicators">
                       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -103,24 +102,36 @@
                       <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                     </ol>
                     <div class="carousel-inner">
-
                       <div class="carousel-item active">
-                        <img class="d-block w-100" src="{% url 'main_picture' property.id %}" alt="First slide" style="height:480px;">
+                        <img class="d-block w-100" src="{% static 'pictures/1.5.png' %}" alt="First slide">
                           <div class="carousel-caption-new d-none d-md-block">
-                              <lable class="detail_pic" >{{property.address}}</lable>
+                              <lable class="detail_pic">8521 Wolf Den Trl, Port Richey, FL 34668</lable>
                           </div>
                       </div>
-
-                        {% for pic in pictures %}
-                            {% if pic.title != 'main' %}
-                                <div class="carousel-item ">
-                                    <img class="d-block w-100" src="{% url 'picture' pic.id %}" alt="First slide" style="height:480px;">
-                                      <div class="carousel-caption-new d-none d-md-block">
-                                          <lable class="detail_pic" >{{pic.title}}</lable>
-                                      </div>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static 'pictures/1.1.png' %}" alt="First slide">
+                          <div class="carousel-caption-new d-none d-md-block">
+                              <lable class="detail_pic">8521 Wolf Den Trl, Port Richey, FL 34668</lable>
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static 'pictures/1.2.png' %}" alt="First slide">
+                          <div class="carousel-caption-new d-none d-md-block">
+                              <lable class="detail_pic">8521 Wolf Den Trl, Port Richey, FL 34668</lable>
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static 'pictures/1.3.png' %}" alt="First slide">
+                          <div class="carousel-caption-new d-none d-md-block">
+                              <lable class="detail_pic">8521 Wolf Den Trl, Port Richey, FL 34668</lable>
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static 'pictures/1.4.png' %}" alt="First slide">
+                          <div class="carousel-caption-new d-none d-md-block">
+                              <lable class="detail_pic">8521 Wolf Den Trl, Port Richey, FL 34668</lable>
+                          </div>
+                      </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -189,14 +200,9 @@
                     </div>
 
                     <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
-                        <span class="property-info-icon icon-garage">
-                            <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" style="" viewBox="0 0 390.557 390.557" x="0px" y="0px" width="30" height="30" xmlns:xml="http://www.w3.org/XML/1998/namespace" xml:space="preserve" version="1.1">
-                                <g>
-                                    <path fill="#0066ff" d="M 389.772 248.296 l -42.991 -68.063 V 55.028 l -17.5 -17.5 H 61.275 l -17.5 17.5 v 125.204 L 0.784 248.296 H 389.772 Z M 311.781 72.528 v 87.362 c -22.553 -5.834 -61.514 -13.028 -116.503 -13.028 s -93.95 7.194 -116.503 13.028 V 72.528 H 311.781 Z" ></path>
-                                    <polygon fill="#0066ff" points="0,269.831 0,304.831 40.778,304.831 40.778,353.028 75.778,353.028 75.778,304.831 314.778,304.831 314.778,353.028 349.778,353.028 349.778,304.831 390.557,304.831 390.557,269.831" ></polygon>
-                                    <path fill="#0066ff" d="M 181.075 128.653 v -20.389 c 0 -12.102 -17.564 -21.916 -39.23 -21.916 s -39.229 9.814 -39.229 21.916 v 30.604 c 0 0 23.14 -5.826 39.045 -7.332 C 155.98 130.179 181.075 128.653 181.075 128.653 Z" ></path>
-                                    <path fill="#0066ff" d="M 287.941 138.868 v -30.604 c 0 -12.102 -17.564 -21.916 -39.23 -21.916 s -39.23 9.814 -39.23 21.916 v 20.389 c 0 0 25.096 1.525 39.415 2.883 C 264.802 133.042 287.941 138.868 287.941 138.868 Z" ></path>
-                                </g>
+                        <span class="property-info-icon icon-bed">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
+                            <path class="meta-icon" fill="#0066ff" d="M21 48.001h-19c-1.104 0-2-.896-2-2v-31c0-1.104.896-2 2-2h19c1.106 0 2 .896 2 2v31c0 1.104-.895 2-2 2zm0-37.001h-19c-1.104 0-2-.895-2-1.999v-7.001c0-1.104.896-2 2-2h19c1.106 0 2 .896 2 2v7.001c0 1.104-.895 1.999-2 1.999zm25 37.001h-19c-1.104 0-2-.896-2-2v-31c0-1.104.896-2 2-2h19c1.104 0 2 .896 2 2v31c0 1.104-.896 2-2 2zm0-37.001h-19c-1.104 0-2-.895-2-1.999v-7.001c0-1.104.896-2 2-2h19c1.104 0 2 .896 2 2v7.001c0 1.104-.896 1.999-2 1.999z"></path>
                             </svg>
                         </span>
                         <span class="property-info-entry">
@@ -232,25 +238,6 @@
                             <span class="property-info-value">2</span>
                         </span>
                     </div>
-
-                     <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
-                        <span class="property-info-icon icon-garage">
-                            <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" style="" viewBox="0 0 512 512" x="0px" y="0px" width="30px" height="30px" xmlns:xml="http://www.w3.org/XML/1998/namespace" xml:space="preserve" version="1.1">
-                                <g>
-                                    <path fill="#0066ff" d="M 437.319 30.073 h -60 c -5.7 0 -10.8 2.999 -13.2 7.8 l 88.2 75.3 v -68.1 h 0 C 452.319 36.672 445.72 30.073 437.319 30.073 Z" ></path>
-                                    <path fill="#0066ff" d="M 198 360 v 152 h 120 V 360 H 198 Z M 273 420 c -8.284 0 -15 -6.716 -15 -15 s 6.716 -15 15 -15 s 15 6.716 15 15 S 281.284 420 273 420 Z" ></path>
-                                    <rect fill="#0066ff" x="227" y="210" width="60" height="60" ></rect>
-                                    <path fill="#0066ff" d="M 501.524 199.89 L 276.831 7.28 C 271.352 2.578 264.409 0 257.319 0 c -7.09 0 -14.033 2.578 -19.512 7.31 L 10.473 199.792 c -12.432 10.655 -14.019 29.313 -3.564 41.915 c 10.694 12.891 29.875 14.522 42.593 3.622 L 257.319 69.58 l 205.158 175.861 c 14.19 12.164 35.929 8.53 45.392 -7.588 C 515.222 225.331 512.549 209.341 501.524 199.89 Z" ></path>
-                                    <path fill="#0066ff" d="M 257 109.014 L 59.247 276.147 V 497 c 0 8.401 6.599 15 15 15 H 167 V 345 c 0 -8.291 6.709 -15 15 -15 h 150 c 8.291 0 15 6.709 15 15 v 167 h 90 c 8.401 0 15 -6.599 15 -15 V 276.178 L 257 109.014 Z M 317 285 c 0 8.291 -6.709 15 -15 15 h -90 c -8.291 0 -15 -6.709 -15 -15 v -90 c 0 -8.291 6.709 -15 15 -15 h 90 c 8.291 0 15 6.709 15 15 V 285 Z" ></path>
-                                </g>
-                            </svg>
-                        </span>
-                        <span class="property-info-entry">
-                            <span class="property-info-label">Garages</span>
-                            <span class="property-info-value">2</span>
-                        </span>
-                    </div>
-
                 </div>
 
             </div>
@@ -352,8 +339,10 @@
     </div>
 
 <script>
-    var address = $("#address").html();
-    var addressesArray = [address]
+    var addressesArray = [
+    '8521 Wolf Den Trl, Port Richey, FL 34668',
+    //follow this structure
+    ]
 
         function initMap() {
             $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address='+addressesArray+'&key=AIzaSyBSMabzaPmRAMk8G4XP0DhSlASFpgNAmDU', null, function (data) {
@@ -361,7 +350,7 @@
             var target= new google.maps.LatLng(p.lat, p.lng);
 
           var map = new google.maps.Map(
-              document.getElementById('map'), {zoom: 10, center: target});
+              document.getElementById('map'), {zoom: 6, center: target});
 
           var marker = new google.maps.Marker({position: target, map: map});
           });

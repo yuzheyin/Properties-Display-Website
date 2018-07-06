@@ -323,7 +323,7 @@
 							  <div class="item-grid__image-container">
 								<a href="single_property_1.html">
 								  <div class="item-grid__image-overlay"></div><!-- .item-grid__image-overlay -->
-								  <img src="{%  url 'picture' property.id %}" alt="Image not available" class="listing__img">
+								  <img src="{%  url 'main_picture' property.id %}" alt="Image not available" class="listing__img" style="height:400px;">
 								  <span class="listing__favorite"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
 								</a>
 							  </div><!-- .item-grid__image-container -->
@@ -332,16 +332,16 @@
 								<div class="listing__content">
 								  <div class="listing__header">
 									<div class="listing__header-primary">
-									  <h3 class="listing__title"><a href="single_property_1.html">{{property.address}}</a></h3>
-									  <p class="listing__location"><span class="ion-ios-location-outline listing__location-icon"></span> property.description </p>
+									  <h3 class="listing__title" ><a href="single_property_1.html" style="color:#002053">{{property.address}}</a></h3>
+									  <p class="listing__location"><span class="ion-ios-location-outline listing__location-icon"></span> {{property.description}} </p>
 									</div><!-- .listing__header-primary -->
-									<p class="listing__price">${{property.list_price}}</p>
+									<p class="listing__price">$ {{property.list_price}}</p>
 								  </div><!-- .listing__header -->
 								  <div class="listing__details">
 									<ul class="listing__stats">
-									  <li><span class="listing__figure">5<sup>+</sup></span> Beds</li>
-									  <li><span class="listing__figure">3</span> Baths</li>
-									  <li><span class="listing__figure">1,250</span> sq.ft</li>
+									  <li><span class="listing__figure">{{property.bedroom}}<sup>+</sup></span> Bedroom(s)</li>
+									  <li><span class="listing__figure">{{property.bath}}</span> Bath(s)</li>
+									  <li><span class="listing__figure">{{property.size}}</span> sq.ft</li>
 									</ul><!-- .listing__stats -->
 									<a href="single_property_1.html" class="listing__btn">Details <span class="listing__btn-icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
 								  </div><!-- .listing__details -->
