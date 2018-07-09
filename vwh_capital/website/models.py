@@ -102,6 +102,7 @@ class Property(models.Model):
     size = models.FloatField(default=0)
     lot_size = models.FloatField(default=0)
     style = models.CharField(max_length=30, blank=True)
+    condition = models.CharField(max_length=30, blank=True)
     bedroom = models.IntegerField(default=0)
     bath = models.IntegerField(default=0)
     half_bath = models.IntegerField(default=0)

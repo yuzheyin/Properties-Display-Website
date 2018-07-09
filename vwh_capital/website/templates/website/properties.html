@@ -1,392 +1,366 @@
 {% extends "website/base.html" %}
 {% block content %}
 {% load staticfiles %}
-    <div style="height:80px;"></div>
-    <!-- Page Content -->
-<div id="wrapper">
+<div style="height:80px;"></div>
+<!-- Page Content -->
+<div id="wrapper" class="toggled">
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-                    <div class="blog-asside-right pr0">
-                        <div class="panel panel-default sidebar-menu wow fadeInRight animated animated" style="visibility: visible; animation-name: fadeInRight;">
-                            <div class="panel-heading">
-                                <h4 class="panel-title" style="color:white">Advanced search</h4>
-                            </div>
-
-                            <div class="panel-body search-widget">
-                                <form action="" class=" form-inline">
-
-                                    <div class="container">
-                                        <div class="row justify-content-md-center">
-
-                                            <div class="well">
-
-                                              <div class="form-group">
-                                                <p for="location1" class="control-label" style="font-size:15px;color: white;">City</p>
-                                                <select class="form-control" name="" id="location1">
-                                                  <option value="">Any</option>
-                                                  <option value="">1</option>
-                                                  <option value="">2</option>
-                                                </select>
-                                              </div>
-
-                                              <div class="form-group">
-                                                <p for="type1" class="control-label" style="font-size:15px;color: white;">Type</p>
-                                                <select class="form-control" name="" id="type1">
-                                                  <option value="">Any</option>
-                                                  <option value="">1</option>
-                                                  <option value="">2</option>
-                                                </select>
-                                              </div>
-
-                                              <div class="form-group">
-                                                <p for="pricefrom" class="col" style="font-size:15px;color: white;">Min Price</p>
-                                                <div class="input-group">
-                                                  <input type="text" class="form-control" id="pricefrom" aria-describedby="basic-addon1">
-                                                </div>
-                                              </div>
-
-                                              <div class="form-group">
-                                                <p for="priceto" class="col" style="font-size:15px;color: white;">Max Price</p>
-                                                <div class="input-group">
-                                                  <input type="text" class="form-control" id="priceto" aria-describedby="basic-addon1">
-                                                </div>
-                                              </div>
-
-                                            </div>
-                                             <div class="form-group" style="margin-top:30px;">
-                                                 <input class="btn btn-primary btn-lg" value="Search" type="submit">
-                                             </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </form>
-                            </div>
-                        </div>
-
-                    </div>
-
-        </div>
-        <!-- /#sidebar-wrapper -->
-            <div class="container-fluid sticky-top">
-               <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle"> <i class="material-icons md-36">search</i> <br> Search</a>
-            </div>
-
-    <section class="main-search">
-		<div class="container">
-			<div class="main-search__container">
-				<section class="listing-search">
-					<form action="index.html" method="get" class="listing-search__form">
-						<div class="row">
-							<div class="col-sm-3">
-								<label for="listing-type" class="listing-search__label">Listing Types</label>
-								<select name="listing-type" id="listing-type" class="ht-field" data-dkcacheid="0">
-									<option value="All" selected="">All Listing Type</option>
-									<option value="For Rent">For Rent</option>
-									<option value="For Sale">For Sale</option>
-									<option value="Open House">Open House</option>
-								</select>
-							</div><!-- .col -->
-
-							<div class="col-sm-3">
-								<label for="offer-type" class="listing-search__label">Offer Type</label>
-								<select name="offer-type" id="offer-type" class="ht-field" data-dkcacheid="1">
-									<option value="All" selected="">All Offer Type</option>
-									<option value="For Rent">For Rent</option>
-									<option value="For Sale">For Sale</option>
-									<option value="Open House">Open House</option>
-								</select>
-							</div><!-- .col -->
-
-							<div class="col-sm-3">
-								<label for="city" class="listing-search__label">Select Your City</label>
-								<select name="city" id="city" class="ht-field" data-dkcacheid="2">
-									<option value="All" selected="">All City</option>
-									<option value="AL">Alabama</option>
-									<option value="AK">Alaska</option>
-									<option value="AZ">Arizona</option>
-									<option value="AR">Arkansas</option>
-									<option value="CA">California</option>
-									<option value="CO">Colorado</option>
-									<option value="CT">Connecticut</option>
-								</select>
-							</div><!-- .col -->
-
-							<div class="col-sm-3">
-								<label for="listing-btn" class="listing-search__label listing-search__label--hidden">Advanced Search</label>
-								<a href="#" id="listing-btn" class="listing-search__btn">Advanced Search</a>
-							</div><!-- .col -->
-						</div><!-- row -->
-
-						<div class="listing-search__advance">
-							<div class="row">
-								<div class="col-sm-3">
-									<label for="keywords" class="listing-search__label">Keyword</label>
-									<input id="keywords" class="listing-search__field" placeholder="Type your keywords..." type="text">
-								</div><!-- .col -->
-
-								<div class="col-sm-3">
-									<label for="min-price" class="listing-search__label">Min Price</label>
-									<select name="min-price" id="min-price" class="ht-field" data-dkcacheid="3">
-										<option value="Unlimited" selected="">Unlimited</option>
-										<option value="$1,000">$1,000</option>
-										<option value="$10,000">$10,000</option>
-										<option value="$20,000">$20,000</option>
-										<option value="$50,000">$50,000</option>
-										<option value="$100,000">$100,000</option>
-									</select>
-								</div><!-- .col -->
-
-								<div class="col-sm-3">
-									<label for="bedrooms" class="listing-search__label">Bedrooms</label>
-									<select name="bedrooms" id="bedrooms" class="ht-field" data-dkcacheid="4">
-										<option value="Any" selected="">Any</option>
-										<option value="1">01 bedroom(s)</option>
-										<option value="2">02 bedroom(s)</option>
-										<option value="3">03 bedroom(s)</option>
-										<option value="4">04 bedroom(s)</option>
-										<option value="5">05 bedroom(s)</option>
-										<option value="6">06 bedroom(s)</option>
-										<option value="7">07 bedroom(s)</option>
-									</select>
-								</div><!-- .col -->
-
-								<div class="col-sm-3">
-									<label for="bathrooms" class="listing-search__label">Bathrooms</label>
-									<select name="bathrooms" id="bathrooms" class="ht-field" data-dkcacheid="5">
-										<option value="Any" selected="">Any</option>
-										<option value="1">01 bathroom(s)</option>
-										<option value="2">02 bathroom(s)</option>
-										<option value="3">03 bathroom(s)</option>
-										<option value="4">04 bathroom(s)</option>
-										<option value="5">05 bathroom(s)</option>
-										<option value="6">06 bathroom(s)</option>
-										<option value="7">07 bathroom(s)</option>
-									</select>
-								</div><!-- .col -->
-
-								<div class="col-sm-3">
-									<label for="property-size" class="listing-search__label">Property Size</label>
-									<div class="listing-search__amount">
-										<label for="property-amount">Sq.Ft</label>
-										<span id="property-amount">1000 - 8000</span>
-									</div><!-- listing-search__amount -->
-									<div id="property-size" class="listing-search__slider listing-search__property-size ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
-								</div><!-- .col -->
-
-								<div class="col-sm-3">
-									<label for="lot-size" class="listing-search__label">Lot Size</label>
-									<div class="listing-search__amount">
-										<label for="lot-amount">Sq.Ft</label>
-										<span id="lot-amount">1000 - 8000</span>
-									</div><!-- .listing-search__amount -->
-									<div id="lot-size" class="listing-search__slider listing-search__lot-size ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
-								</div><!-- .col -->
-
-								<div class="col-sm-3">
-									<label for="garages" class="listing-search__label">Garages</label>
-									<select name="garages" id="garages" class="ht-field" data-dkcacheid="6">
-										<option value="Any" selected="">Any</option>
-										<option value="1">01 garage(s)</option>
-										<option value="2">02 garage(s)</option>
-										<option value="3">03 garage(s)</option>
-										<option value="4">04 garage(s)</option>
-									</select>
-								</div><!-- .col -->
-
-								<div class="col-sm-3">
-									<label for="tenure" class="listing-search__label">Tenure</label>
-									<select name="tenure" id="tenure" class="ht-field" data-dkcacheid="7">
-										<option value="Any" selected="">Any</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-									</select>
-								</div><!-- .col -->
-							</div><!-- .row -->
-
-							<div class="listing-search__more">
-								<a class="listing-search__more-btn" href="#">Additional Features</a>
-
-								<div class="listing-search__more-inner">
-									<div class="row">
-										<div class="col-sm-6 col-md-3">
-											<div class="listing-search__more-wrapper">
-												<input name="parking-garage" id="parking-garage" class="listing-search__more-field" type="checkbox">
-												<label for="parking-garage" class="listing-search__more-label">Parking/Garage (26)</label>
-											</div><!-- .listing-search__more-wrapper -->
-
-											<div class="listing-search__more-wrapper">
-												<input name="balcony-terrace" id="balcony-terrace" class="listing-search__more-field" type="checkbox">
-												<label for="balcony-terrace" class="listing-search__more-label">Balcony/Terrace (24)</label>
-											</div>
-
-											<div class="listing-search__more-wrapper">
-												<input name="garden" id="garden" class="listing-search__more-field" type="checkbox">
-												<label for="garden" class="listing-search__more-label">Garden (26)</label>
-											</div>
-
-											<div class="listing-search__more-wrapper">
-												<input name="porter-security" id="porter-security" class="listing-search__more-field" type="checkbox">
-												<label for="porter-security" class="listing-search__more-label">Porter/Security (24)</label>
-											</div>
-
-											<div class="listing-search__more-wrapper">
-												<input name="fireplace" id="fireplace" class="listing-search__more-field" type="checkbox">
-												<label for="fireplace" class="listing-search__more-label">Fireplace (23)</label>
-											</div>
-										</div>
-
-										<div class="col-sm-6 col-md-3">
-											<div class="listing-search__more-wrapper">
-												<input name="rural-secluded" id="rural-secluded" class="listing-search__more-field" type="checkbox">
-												<label for="rural-secluded" class="listing-search__more-label">Rural/Secluded (21)</label>
-											</div>
-
-											<div class="listing-search__more-wrapper">
-												<input name="air-conditioning" id="air-conditioning" class="listing-search__more-field" type="checkbox">
-												<label for="air-conditioning" class="listing-search__more-label">Air Conditioning (22)</label>
-											</div>
-
-											<div class="listing-search__more-wrapper">
-												<input name="lawn" id="lawn" class="listing-search__more-field" type="checkbox">
-												<label for="lawn" class="listing-search__more-label">Lawn (4)</label>
-											</div>
-
-											<div class="listing-search__more-wrapper">
-												<input name="swimming-pool" id="swimming-pool" class="listing-search__more-field" type="checkbox">
-												<label for="swimming-pool" class="listing-search__more-label">Swimming Pool (4)</label>
-											</div>
-
-										</div>
-
-										<div class="col-sm-6 col-md-3">
-											<div class="listing-search__more-wrapper">
-												<input name="window-coverings" id="window-coverings" class="listing-search__more-field" type="checkbox">
-												<label for="window-coverings" class="listing-search__more-label">Window Coverings (21)</label>
-											</div>
-
-											<div class="listing-search__more-wrapper">
-												<input name="dryer" id="dryer" class="listing-search__more-field" type="checkbox">
-												<label for="dryer" class="listing-search__more-label">Dryer (21)</label>
-											</div>
-
-											<div class="listing-search__more-wrapper">
-												<input name="laundry" id="laundry" class="listing-search__more-field" type="checkbox">
-												<label for="laundry" class="listing-search__more-label">Laundry (24)</label>
-											</div>
-										</div>
-									</div><!-- .row -->
-								</div><!-- .listing-search__more-inner -->
-							</div><!-- .listing-search__more -->
-						</div><!-- .listing-search__advance -->
-					</form><!-- .listing-search__form -->
-				</section><!-- .listing-search -->
-
-				<section class="listing-sort">
-					<div class="listing-sort__inner">
-
-						<span class="listing-sort__result">1-9 of 25 results</span>
-
-						<p class="listing-sort__sort">
-							<label for="sort-type" class="listing-sort__label"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i> Sort by </label>
-							<select name="sort-type" id="sort-type" class="ht-field listing-sort__field" data-dkcacheid="8">
-								<option value="default">Default</option>
-								<option value="low-price">Price (Low to High)</option>
-								<option value="high-price">Price (High to Low)</option>
-								<option value="featured">Featured</option>
-							</select>
-						</p>
-					</div><!-- .listing-sort__inner -->
-				</section><!-- .listing-sort -->
-			</div><!-- .main-search__container -->
-		</div><!-- .container -->
-	</section>
-
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-
-            <div class="container">
-
-			  <!-- Page Heading -->
-			  <h1 class="my-4" style="color:#002053">Properties List
-				<small>On sale</small>
-			  </h1>
-
-				<div class="row">
-					{% for property in properties %}
-					<div class="col-md-6 item-grid__container">
-							<div class="listing">
-							  <div class="item-grid__image-container">
-								<a href="single_property_1.html">
-								  <div class="item-grid__image-overlay"></div><!-- .item-grid__image-overlay -->
-								  <img src="{%  url 'main_picture' property.id %}" alt="Image not available" class="listing__img" style="height:400px;">
-								  <span class="listing__favorite"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-								</a>
-							  </div><!-- .item-grid__image-container -->
-
-							  <div class="item-grid__content-container">
-								<div class="listing__content">
-								  <div class="listing__header">
-									<div class="listing__header-primary">
-									  <h3 class="listing__title" ><a href="single_property_1.html" style="color:#002053">{{property.address}}</a></h3>
-									  <p class="listing__location"><span class="ion-ios-location-outline listing__location-icon"></span> {{property.description}} </p>
-									</div><!-- .listing__header-primary -->
-									<p class="listing__price">$ {{property.list_price}}</p>
-								  </div><!-- .listing__header -->
-								  <div class="listing__details">
-									<ul class="listing__stats">
-									  <li><span class="listing__figure">{{property.bedroom}}<sup>+</sup></span> Bedroom(s)</li>
-									  <li><span class="listing__figure">{{property.bath}}</span> Bath(s)</li>
-									  <li><span class="listing__figure">{{property.size}}</span> sq.ft</li>
-									</ul><!-- .listing__stats -->
-									<a href="single_property_1.html" class="listing__btn">Details <span class="listing__btn-icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
-								  </div><!-- .listing__details -->
-								</div><!-- .listing-content -->
-							  </div><!-- .item-grid__content-container -->
-							</div><!-- .listing -->
-					</div>
-
-					{% endfor %}
-
+	<!-- Sidebar -->
+	<div id="sidebar-wrapper">
+		<div class="blog-asside-right pr0">
+			<div class="panel panel-default sidebar-menu wow fadeInRight animated animated" style="visibility: visible; animation-name: fadeInRight;">
+				<div class="panel-heading">
+					<h4 class="panel-title" style="color:white">New Inventory</h4>
 				</div>
 
-				<hr>
+				<div class="panel-body search-widget">
+					<form action="" class=" form-inline">
 
-                  <!-- Pagination -->
-                  <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </li>
-                  </ul>
+						<div class="container">
+							<div class="row justify-content-md-center">
 
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
+								<div class="well">
 
-    </div>
 
-    <!-- /.container -->
+
+
+
+
+								</div>
+
+
+							</div>
+
+						</div>
+
+					</form>
+				</div>
+			</div>
+
+
+		</div>
+
+
+	</div>
+	<!-- /#sidebar-wrapper -->
+	<!--<div class="sticky-top">-->
+	<!--<a href="#menu-toggle" class="btn btn-primary" id="menu-toggle"> <i class="material-icons md-36">list</i>New inventory</a>-->
+	<!--</div>-->
+
+
+
+
+	<!-- Page Content -->
+	<div id="page-content-wrapper">
+		<section class="main-search">
+			<div class="container">
+				<div class="main-search__container">
+					<section class="listing-search">
+						<form action="index.html" method="get" class="listing-search__form">
+							<div class="row">
+								<div class="col-sm-3">
+									<label for="listing-type" class="listing-search__label">Listing Types</label>
+									<select name="listing-type" id="listing-type" class="ht-field" data-dkcacheid="0">
+										<option value="All" selected="">All Listing Type</option>
+										<option value="For Rent">For Rent</option>
+										<option value="For Sale">For Sale</option>
+										<option value="Open House">Open House</option>
+									</select>
+								</div><!-- .col -->
+
+								<div class="col-sm-3">
+									<label for="offer-type" class="listing-search__label">Offer Type</label>
+									<select name="offer-type" id="offer-type" class="ht-field" data-dkcacheid="1">
+										<option value="All" selected="">All Offer Type</option>
+										<option value="For Rent">For Rent</option>
+										<option value="For Sale">For Sale</option>
+										<option value="Open House">Open House</option>
+									</select>
+								</div><!-- .col -->
+
+								<div class="col-sm-3">
+									<label for="city" class="listing-search__label">Select Your City</label>
+									<select name="city" id="city" class="ht-field" data-dkcacheid="2">
+										<option value="All" selected="">All City</option>
+										<option value="AL">Alabama</option>
+										<option value="AK">Alaska</option>
+										<option value="AZ">Arizona</option>
+										<option value="AR">Arkansas</option>
+										<option value="CA">California</option>
+										<option value="CO">Colorado</option>
+										<option value="CT">Connecticut</option>
+									</select>
+								</div><!-- .col -->
+
+								<div class="col-sm-3">
+									<label for="listing-btn" class="listing-search__label listing-search__label--hidden">Advanced Search</label>
+									<a href="#" id="listing-btn" class="listing-search__btn">Advanced Search</a>
+								</div><!-- .col -->
+							</div><!-- row -->
+
+							<div class="listing-search__advance">
+								<div class="row">
+									<div class="col-sm-3">
+										<label for="keywords" class="listing-search__label">Keyword</label>
+										<input id="keywords" class="listing-search__field" placeholder="Type your keywords..." type="text">
+									</div><!-- .col -->
+
+									<div class="col-sm-3">
+										<label for="min-price" class="listing-search__label">Min Price</label>
+										<select name="min-price" id="min-price" class="ht-field" data-dkcacheid="3">
+											<option value="Unlimited" selected="">Unlimited</option>
+											<option value="$1,000">$1,000</option>
+											<option value="$10,000">$10,000</option>
+											<option value="$20,000">$20,000</option>
+											<option value="$50,000">$50,000</option>
+											<option value="$100,000">$100,000</option>
+										</select>
+									</div><!-- .col -->
+
+									<div class="col-sm-3">
+										<label for="bedrooms" class="listing-search__label">Bedrooms</label>
+										<select name="bedrooms" id="bedrooms" class="ht-field" data-dkcacheid="4">
+											<option value="Any" selected="">Any</option>
+											<option value="1">01 bedroom(s)</option>
+											<option value="2">02 bedroom(s)</option>
+											<option value="3">03 bedroom(s)</option>
+											<option value="4">04 bedroom(s)</option>
+											<option value="5">05 bedroom(s)</option>
+											<option value="6">06 bedroom(s)</option>
+											<option value="7">07 bedroom(s)</option>
+										</select>
+									</div><!-- .col -->
+
+									<div class="col-sm-3">
+										<label for="bathrooms" class="listing-search__label">Bathrooms</label>
+										<select name="bathrooms" id="bathrooms" class="ht-field" data-dkcacheid="5">
+											<option value="Any" selected="">Any</option>
+											<option value="1">01 bathroom(s)</option>
+											<option value="2">02 bathroom(s)</option>
+											<option value="3">03 bathroom(s)</option>
+											<option value="4">04 bathroom(s)</option>
+											<option value="5">05 bathroom(s)</option>
+											<option value="6">06 bathroom(s)</option>
+											<option value="7">07 bathroom(s)</option>
+										</select>
+									</div><!-- .col -->
+
+									<div class="col-sm-3">
+										<label for="property-size" class="listing-search__label">Property Size</label>
+										<div class="listing-search__amount">
+											<label for="property-amount">Sq.Ft</label>
+											<span id="property-amount">1000 - 8000</span>
+										</div><!-- listing-search__amount -->
+										<div id="property-size" class="listing-search__slider listing-search__property-size ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
+									</div><!-- .col -->
+
+									<div class="col-sm-3">
+										<label for="lot-size" class="listing-search__label">Lot Size</label>
+										<div class="listing-search__amount">
+											<label for="lot-amount">Sq.Ft</label>
+											<span id="lot-amount">1000 - 8000</span>
+										</div><!-- .listing-search__amount -->
+										<div id="lot-size" class="listing-search__slider listing-search__lot-size ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
+									</div><!-- .col -->
+
+									<div class="col-sm-3">
+										<label for="garages" class="listing-search__label">Garages</label>
+										<select name="garages" id="garages" class="ht-field" data-dkcacheid="6">
+											<option value="Any" selected="">Any</option>
+											<option value="1">01 garage(s)</option>
+											<option value="2">02 garage(s)</option>
+											<option value="3">03 garage(s)</option>
+											<option value="4">04 garage(s)</option>
+										</select>
+									</div><!-- .col -->
+
+									<div class="col-sm-3">
+										<label for="tenure" class="listing-search__label">Tenure</label>
+										<select name="tenure" id="tenure" class="ht-field" data-dkcacheid="7">
+											<option value="Any" selected="">Any</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+										</select>
+									</div><!-- .col -->
+								</div><!-- .row -->
+
+								<div class="listing-search__more">
+									<a class="listing-search__more-btn" href="#">Additional Features</a>
+
+									<div class="listing-search__more-inner">
+										<div class="row">
+											<div class="col-sm-6 col-md-3">
+												<div class="listing-search__more-wrapper">
+													<input name="parking-garage" id="parking-garage" class="listing-search__more-field" type="checkbox">
+													<label for="parking-garage" class="listing-search__more-label">Parking/Garage (26)</label>
+												</div><!-- .listing-search__more-wrapper -->
+
+												<div class="listing-search__more-wrapper">
+													<input name="balcony-terrace" id="balcony-terrace" class="listing-search__more-field" type="checkbox">
+													<label for="balcony-terrace" class="listing-search__more-label">Balcony/Terrace (24)</label>
+												</div>
+
+												<div class="listing-search__more-wrapper">
+													<input name="garden" id="garden" class="listing-search__more-field" type="checkbox">
+													<label for="garden" class="listing-search__more-label">Garden (26)</label>
+												</div>
+
+												<div class="listing-search__more-wrapper">
+													<input name="porter-security" id="porter-security" class="listing-search__more-field" type="checkbox">
+													<label for="porter-security" class="listing-search__more-label">Porter/Security (24)</label>
+												</div>
+
+												<div class="listing-search__more-wrapper">
+													<input name="fireplace" id="fireplace" class="listing-search__more-field" type="checkbox">
+													<label for="fireplace" class="listing-search__more-label">Fireplace (23)</label>
+												</div>
+											</div>
+
+											<div class="col-sm-6 col-md-3">
+												<div class="listing-search__more-wrapper">
+													<input name="rural-secluded" id="rural-secluded" class="listing-search__more-field" type="checkbox">
+													<label for="rural-secluded" class="listing-search__more-label">Rural/Secluded (21)</label>
+												</div>
+
+												<div class="listing-search__more-wrapper">
+													<input name="air-conditioning" id="air-conditioning" class="listing-search__more-field" type="checkbox">
+													<label for="air-conditioning" class="listing-search__more-label">Air Conditioning (22)</label>
+												</div>
+
+												<div class="listing-search__more-wrapper">
+													<input name="lawn" id="lawn" class="listing-search__more-field" type="checkbox">
+													<label for="lawn" class="listing-search__more-label">Lawn (4)</label>
+												</div>
+
+												<div class="listing-search__more-wrapper">
+													<input name="swimming-pool" id="swimming-pool" class="listing-search__more-field" type="checkbox">
+													<label for="swimming-pool" class="listing-search__more-label">Swimming Pool (4)</label>
+												</div>
+
+											</div>
+
+											<div class="col-sm-6 col-md-3">
+												<div class="listing-search__more-wrapper">
+													<input name="window-coverings" id="window-coverings" class="listing-search__more-field" type="checkbox">
+													<label for="window-coverings" class="listing-search__more-label">Window Coverings (21)</label>
+												</div>
+
+												<div class="listing-search__more-wrapper">
+													<input name="dryer" id="dryer" class="listing-search__more-field" type="checkbox">
+													<label for="dryer" class="listing-search__more-label">Dryer (21)</label>
+												</div>
+
+												<div class="listing-search__more-wrapper">
+													<input name="laundry" id="laundry" class="listing-search__more-field" type="checkbox">
+													<label for="laundry" class="listing-search__more-label">Laundry (24)</label>
+												</div>
+											</div>
+										</div><!-- .row -->
+									</div><!-- .listing-search__more-inner -->
+								</div><!-- .listing-search__more -->
+							</div><!-- .listing-search__advance -->
+						</form><!-- .listing-search__form -->
+					</section><!-- .listing-search -->
+
+					<section class="listing-sort">
+						<div class="listing-sort__inner">
+
+							<span class="listing-sort__result">1-9 of 25 results</span>
+
+							<p class="listing-sort__sort">
+								<label for="sort-type" class="listing-sort__label"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i> Sort by </label>
+								<select name="sort-type" id="sort-type" class="ht-field listing-sort__field" data-dkcacheid="8">
+									<option value="default">Default</option>
+									<option value="low-price">Price (Low to High)</option>
+									<option value="high-price">Price (High to Low)</option>
+									<option value="featured">Featured</option>
+								</select>
+							</p>
+						</div><!-- .listing-sort__inner -->
+					</section><!-- .listing-sort -->
+				</div><!-- .main-search__container -->
+			</div><!-- .container -->
+		</section>
+
+		<div class="container">
+
+			<!-- Page Heading -->
+			<h1 class="my-4" style="color:#002053">Properties List
+				<small>On sale</small>
+			</h1>
+
+			<div class="row">
+				{% for property in properties %}
+				<div class="col-md-6 item-grid__container">
+					<div class="listing">
+						<div class="item-grid__image-container">
+							<a href="{% url 'details' property.id %}">
+								<div class="item-grid__image-overlay"></div><!-- .item-grid__image-overlay -->
+								<img src="{%  url 'main_picture' property.id %}" alt="Image not available" class="listing__img" style="height:400px;">
+								<!--<span class="listing__favorite"><i class="fa fa-heart-o" aria-hidden="true"></i></span>-->
+							</a>
+						</div><!-- .item-grid__image-container -->
+
+						<div class="item-grid__content-container">
+							<div class="listing__content">
+								<div class="listing__header">
+									<div class="listing__header-primary col-md-10">
+										<h3 class="listing__title" ><a href="{% url 'details' property.id %}" style="color:#002053">{{property.address}}</a></h3>
+										<p class="listing__location"></span> {{property.description}} </p>
+									</div><!-- .listing__header-primary -->
+									<p class="listing__price">$ {{property.list_price}}</p>
+								</div><!-- .listing__header -->
+								<div class="listing__details">
+									<ul class="listing__stats">
+										<li><span class="listing__figure">{{property.bedroom}}<sup>+</sup></span> Bedroom(s)</li>
+										<li><span class="listing__figure">{{property.bath}}</span> Bath(s)</li>
+										<li><span class="listing__figure">{{property.size}}</span> sq.ft</li>
+									</ul><!-- .listing__stats -->
+									<a href="{% url 'details' property.id %}" class="listing__btn">Details <span class="listing__btn-icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+								</div><!-- .listing__details -->
+							</div><!-- .listing-content -->
+						</div><!-- .item-grid__content-container -->
+					</div><!-- .listing -->
+				</div>
+
+				{% endfor %}
+
+			</div>
+
+			<hr>
+
+			<!-- Pagination -->
+			<ul class="pagination justify-content-center">
+				<li class="page-item">
+					<a class="page-link" href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+						<span class="sr-only">Previous</span>
+					</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link" href="#">1</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link" href="#">2</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link" href="#">3</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link" href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+						<span class="sr-only">Next</span>
+					</a>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+	<!-- /#page-content-wrapper -->
+
+</div>
+
+<!-- /.container -->
 
 {% endblock %}
