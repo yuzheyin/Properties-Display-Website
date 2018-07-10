@@ -96,6 +96,7 @@ def confirm_registration(request, username, token):
 @transaction.atomic
 def properties(request):
     properties = Property.objects.order_by('-creation_time')
+
     form = FilterForm()
     context = {'properties': properties, 'form': form}
 
@@ -106,8 +107,16 @@ def properties(request):
 @transaction.atomic
 def details(request, id):
     property = Property.objects.get(id=id)
+    similar = Property.objects.filter(address__locality__state=property.address.locality.state).exclude(id=id)[:4]
     pictures = property.pictures.all()
-    context = {'property': property, 'pictures': pictures}
+    profile = Profile.objects.get(user=request.user)
+    c_list = profile.favorite_list.all
+    if property in c_list:
+        is_added = True
+    else:
+        is_added = False
+
+    context = {'property': property, 'pictures': pictures, 'similar': similar, 'is_added': is_added}
     return render(request, 'website/details.html', context)
 
 
@@ -117,8 +126,36 @@ def home(request):
 
 @login_required
 @transaction.atomic
-def favorite(request):
-    return render(request, 'website/favorite.html')
+def favorite(request, user_id):
+    profile = Profile.objects.get(user__id=user_id)
+    context = {'profile': profile}
+    return render(request, 'website/favorite.html', context)
+
+
+@login_required
+@transaction.atomic
+def add_favorite(request, prop_id):
+    errors = []
+    if request.method == 'POST':
+        c_list = request.user.profile.favorite_list
+        c_list.add(Property.objects.get(id=prop_id))
+    else:
+        errors.append('Wrong method')
+
+    return redirect('details', id=prop_id)
+
+
+@login_required
+@transaction.atomic
+def remove_favorite(request, prop_id):
+    errors = []
+    if request.method == 'POST':
+        c_list = request.user.profile.favorite_list
+        c_list.remove(Property.objects.get(id=prop_id))
+    else:
+        errors.append('Wrong method')
+
+    return redirect('details', id=prop_id)
 
 @transaction.atomic
 def get_main_picture(request, id):

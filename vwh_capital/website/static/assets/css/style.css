@@ -945,7 +945,7 @@ Asside widgets CSS
 }
 .panel.sidebar-menu .panel-heading {
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     background: none;
     padding: 0;
     letter-spacing: 0.198em;
@@ -968,7 +968,7 @@ Asside widgets CSS
 }
 .panel.sidebar-menu .panel-body {
     padding: 0;
-    margin-top: 25px;
+    margin-top: 0px;
 }
 .panel.sidebar-menu .panel-body span.colour {
     display: inline-block;
@@ -2293,8 +2293,7 @@ blog
 */ 
 .blog-asside-right{
     padding-right: 15px;
-padding-left: 15px;
-padding-top: 15px;
+
 padding-bottom: 15px;
 }
 #blog-listing-big {

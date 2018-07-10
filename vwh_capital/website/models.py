@@ -119,7 +119,7 @@ class Property(models.Model):
 
 # Profile Model
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     favorite_list = models.ManyToManyField(Property, related_name="liked_prop")
     longitude = models.FloatField(blank=True, default=0)
     latitude = models.FloatField(blank=True, default=0)

@@ -112,7 +112,7 @@
               <a href="{% url 'register' %}"><button type="button" class="btn btn-dark btn-lg ">sign up</button></a>
           {% else %}
           <h4>Welcome, {{user.first_name}}<i class="material-icons md-36">account_circle</i></h4>
-              <a href="{% url 'favorite' %}"><button type="button" class="btn btn-primary btn-lg ">My collection <i class="material-icons md-36">folder_shared</i> </button></a>
+              <a href="{% url 'favorite' user.id %}"><button type="button" class="btn btn-primary btn-lg ">My collection <i class="material-icons md-36">folder_shared</i> </button></a>
               <a href="{% url 'logout' %}"><button type="button" class="btn btn-dark btn-lg ">Log out</button></a>
           {% endif %}
 

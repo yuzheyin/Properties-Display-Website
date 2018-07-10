@@ -4,7 +4,10 @@
 
 
     <div class="row justify-content-md-center" style="margin:100px;">
+
         <div class="col-md-4 col-xs-12 register-blocks">
+
+
             <h2>New account : </h2>
             <form action="{% url 'register' %}" method="post">
                 {% load myfilters %}
@@ -15,12 +18,15 @@
                     <div class="col-sm-12">
                         <span class="help-inline">
                             {% for error in field.errors %}
-                                {{ error }}
+                             <div class="alert alert-warning" style="margin-top:0px;">
+                            {{ error }}
+                             </div>
                             {% endfor %}
                         </span>
                     </div>
                 </div>
                 {% endfor %}
+
                 {% for field in form.hidden_fields %}
                     {{field}} {{field.errors}}
                 {% endfor %}

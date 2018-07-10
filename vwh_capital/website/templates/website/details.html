@@ -11,7 +11,7 @@
         <div class="blog-asside-right pr0">
             <div class="panel panel-default sidebar-menu wow fadeInRight animated animated" style="visibility: visible; animation-name: fadeInRight;">
                 <div class="panel-heading">
-                    <h4 class="panel-title" style="color:white">New Inventory</h4>
+                    <h4 class="panel-title" style="color:white;margin: 20px 30px;">Most Viewed</h4>
                 </div>
 
                 <div class="panel-body search-widget">
@@ -20,17 +20,19 @@
                         <div class="container">
                             <div class="row justify-content-md-center">
 
-                                <div class="well">
-
-
-
-
-
+                                {% for prop in similar %}
+                                <div class="col-md-12" >
+                                    <a href="{% url 'details' prop.id %}">
+                                        <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="position:relative;">
+                                        <div style="background-color:#002053;opacity:0.65;position:absolute;left:15px;top:120px;width:89%">
+                                        <p style="color:white; text-align:center;"> {{prop.address}} </p></div>
+                                    </a>
+                                </div>
+                                {% endfor %}
 
                                 </div>
 
 
-                            </div>
 
                         </div>
 
@@ -114,7 +116,11 @@
                             <li>  &nbsp;{{property.size|intcomma}}   &nbsp;Sq Ft</li>
                         </ul>
                         <div style="margin-left:80px;margin-top:120px;">
-                            <a href="{% url 'favorite' %}" class="btn btn-primary" > <i class="material-icons md-36">star</i> Add to Collection</a>
+                            {% if is_added %}
+                            <a href="{% url 'remove_favorite' property.id %}" class="btn btn-primary" > <i class="material-icons md-36">star-circle</i> Remove From Collection</a>
+                            {% else %}
+                            <a href="{% url 'add_favorite' property.id %}" class="btn btn-primary" > <i class="material-icons md-36">star</i> Add to Collection</a>
+                            {% endif %}
                         </div>
                 </div>
 
@@ -300,24 +306,15 @@
                 <h3 class="property-title">Similar Properties</h3>
 
                 <div class="row">
-
-                    <div class="col-md-3 col-sm-6 mb-4">
-                        <a href="#">
-                            <img class="img-fluid" src="{% static 'pictures/demo3.png' %}" alt="">
+                    {% for prop in similar %}
+                    <div class="col-md-3 col-sm-6 mb-4" >
+                        <a href="{% url 'details' prop.id %}">
+                            <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="position:relative;">
+                            <div style="background-color:#002053;opacity:0.65;position:absolute;left:15px;top:160px;width:90%">
+                                        <p style="color:white; text-align:center;"> {{prop.address}} </p></div>
                         </a>
                     </div>
-
-                    <div class="col-md-3 col-sm-6 mb-4">
-                        <a href="#">
-                            <img class="img-fluid" src="{% static 'pictures/demo2.png' %}" alt="">
-                        </a>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 mb-4">
-                        <a href="#">
-                            <img class="img-fluid" src="{% static 'pictures/demo1.png' %}" alt="">
-                        </a>
-                    </div>
+                    {% endfor %}
 
                 </div>
             </div>
