@@ -13,25 +13,20 @@
           <!-- Slide One - Set the background image for this slide in the line below -->
           <!--<div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">-->
           <div class="carousel-item active" style="background-image: linear-gradient(180deg,#002053 0%,#2B4C87 100%) !important;">
-             <img class="front" src="{% static 'pictures/demo1.png' %}">
+            <center><img class="front" src="{%  url 'main_picture' cover.id %}" align="middle"></center>
             <div class="carousel-caption d-none d-md-block">
-              <h4 style="color:white;margin-top:10px;">8521 Wolf Den Trl, Port Richey, FL 34668</h4>
+              <h4 style="color:white;margin-top:10px;">{{cover.address}}</h4>
             </div>
           </div>
           <!-- Slide Two - Set the background image for this slide in the line below -->
+          {% for prop in most_viewed %}
           <div class="carousel-item" style="background-image: linear-gradient(180deg,#002053 0%,#2B4C87 100%) !important;">
-            <img class="front" src="{% static 'pictures/demo2.png' %}">
+            <center><img class="front" src="{%  url 'main_picture' prop.id %}" align="middle"></center>
             <div class="carousel-caption d-none d-md-block">
-              <h4 style="color:white;margin-top:10px;">5736 102nd Ave, Pinellas Park, FL 33782</h4>
+              <h4 style="color:white;margin-top:10px;">{{prop.address}}</h4>
             </div>
           </div>
-          <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: linear-gradient(180deg,#002053 0%,#2B4C87 100%) !important;">
-            <img class="front" src="{% static 'pictures/demo3.png' %}">
-            <div class="carousel-caption d-none d-md-block">
-              <h4 style="color:white;margin-top:10px;">5129 Abbott Ave, Columbus, GA 31904</h4>
-            </div>
-          </div>
+          {% endfor %}
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -50,137 +45,37 @@
       <h1 class="my-4" style="color: #002053">Welcome to VWH Capital Properties</h1>
 
       <!-- Marketing Icons Section -->
-      <div class="row">
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">Card Title</h4>
-            <div class="card-body">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">Card Title</h4>
-            <div class="card-body">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">Card Title</h4>
-            <div class="card-body">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Learn More</a>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <!-- /.row -->
 
       <!-- Portfolio Section -->
-      <h2>New Properties on Sale</h2>
+      <h3 style="margin_top:40px; margin-bottom:10px;">Newly Acquired Inventory on Sale</h3>
 
-      <div class="row">
-        <div class="col-lg-4 col-sm-6 portfolio-item">
+
+      <div class="row border border-secondary-top-bottom rounded" style="padding:30px 30px 30px;">
+        {% for prop in new_added %}
+        <div class="col-lg-4 col-sm-6 portfolio-item" >
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'pictures/demo1.png' %}" alt=""></a>
+            <a href="{% url 'details' prop.id %}">
+              <div style="height:220px;width:100%;">
+              <img class="card-img-top" src="{%  url 'main_picture' prop.id %}" alt="NA" style="max-height:100%;max-width:100%;">
+              </div>
+            </a>
             <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project One</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+              <h6 class="card-title">
+                <a href="{% url 'details' prop.id %}">{{prop.address}}</a>
+              </h6>
+              <p class="card-text">{{prop.description}}</p>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'pictures/demo2.png' %}" alt=""></a>
-            <div class=s"card-body">
-              <h4 class="card-title">
-                <a href="#">Project Two</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'pictures/demo3.png' %}" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project Three</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-            </div>
-          </div>
-        </div>
-        <!--<div class="col-lg-4 col-sm-6 portfolio-item">-->
-          <!--<div class="card h-100">-->
-            <!--<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>-->
-            <!--<div class="card-body">-->
-              <!--<h4 class="card-title">-->
-                <!--<a href="#">Project Four</a>-->
-              <!--</h4>-->
-              <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-lg-4 col-sm-6 portfolio-item">-->
-          <!--<div class="card h-100">-->
-            <!--<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>-->
-            <!--<div class="card-body">-->
-              <!--<h4 class="card-title">-->
-                <!--<a href="#">Project Five</a>-->
-              <!--</h4>-->
-              <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-lg-4 col-sm-6 portfolio-item">-->
-          <!--<div class="card h-100">-->
-            <!--<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>-->
-            <!--<div class="card-body">-->
-              <!--<h4 class="card-title">-->
-                <!--<a href="#">Project Six</a>-->
-              <!--</h4>-->
-              <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
+        {% endfor %}
+
+        <button  class="btn btn-dark" style="padding-right:20px;padding-top:10px;margin:30px 400px 10px;width:800px;height:70px;" onclick="window.location.href='{% url 'properties' %}'"><i class="material-icons md-48">business</i> See More Properties</button>
       </div>
       <!-- /.row -->
 
       <!-- Features Section -->
-      <div class="row">
-        <div class="col-lg-6">
-          <h2>VWH Capital Management LP.</h2>
-          <p>VWH Capital Management is an SEC-registered investment adviser. The firm seeks to generate long-term returns in securitized products, distressed credit and whole loans.</p>
-          <ul>
-            <li>
-              <strong>Bootstrap v4</strong>
-            </li>
-            <li>jQuery</li>
-            <li>Font Awesome</li>
-            <li>Working contact form with validation</li>
-            <li>Unstyled page elements for easy customization</li>
-          </ul>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-        </div>
-        <div class="col-lg-6">
-          <!--<img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">-->
-            <div id="map" style="height:500px;width:450px;margin-left: auto;margin-right: auto;"></div>
-        </div>
-      </div>
       <!-- /.row -->
 
       <hr>
@@ -188,10 +83,10 @@
       <!-- Call to Action Section -->
       <div class="row mb-4">
         <div class="col-md-8">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+          <p></p>
         </div>
         <div class="col-md-4">
-          <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
+          <a class="btn btn-lg btn-secondary btn-block" href="#">Contact us</a>
         </div>
       </div>
 

@@ -991,7 +991,7 @@ h4,
 h5,
 h6 {
   font-family: 'Raleway', Helvetica, Arial, sans-serif;
-  color: #333333;
+  color: #444;
   font-weight: 700;
   line-height: 1;
 }
@@ -1428,7 +1428,7 @@ textarea {
 }
 @media only screen and (min-width: 992px) {
   .header__nav-link--mine-shaft {
-    color: #333333 !important;
+    color: #444 !important;
   }
 }
 .header__user {
@@ -1508,7 +1508,7 @@ textarea {
   color: #ffffff;
 }
 .topbar__link--mine-shaft {
-  color: #333333;
+  color: #444;
 }
 .topbar__link--gray {
   color: #888888;
@@ -1560,7 +1560,7 @@ textarea {
   display: none;
 }
 .topbar__user--mine-shaft li:after {
-  color: #333333;
+  color: #444;
 }
 .topbar__user--gray li:after {
   color: #888888;
@@ -1631,7 +1631,7 @@ textarea {
 }
 .footer__title {
   margin-bottom: 15px;
-  color: #333333;
+  color: #444;
   font-size: 18px;
 }
 @media only screen and (min-width: 992px) {
@@ -1658,7 +1658,7 @@ textarea {
   }
 }
 .footer--highlighted {
-  color: #333333;
+  color: #444;
   font-weight: 500;
 }
 .footer--highlighted-v2 {
@@ -1782,7 +1782,7 @@ textarea {
 }
 .section__title {
   margin-bottom: 30px;
-  color: #333333;
+  color: #444;
   font-size: 26px;
 }
 .section__title--large {
@@ -1910,7 +1910,7 @@ textarea {
   border: 0;
   padding: 0;
   background-color: transparent;
-  color: #333333;
+  color: #444;
   font-size: 16px;
   transform: translateY(-50%);
   cursor: pointer;
@@ -1924,7 +1924,7 @@ textarea {
   content: "\f0c8";
   display: inline-block;
   padding-right: 15px;
-  color: #333333;
+  color: #444;
   font-family: "FontAwesome";
   font-size: 6px;
   line-height: 14px;
@@ -1933,7 +1933,7 @@ textarea {
   margin-bottom: 0;
 }
 .widget_list a {
-  color: #333333;
+  color: #444;
   transition: 0.3s color ease-out;
 }
 .widget_list a:hover {
@@ -1963,7 +1963,7 @@ textarea {
   line-height: 20px;
 }
 .widget_thumbnail__link {
-  color: #333333;
+  color: #444;
   transition: 0.3s color ease-out;
 }
 .widget_thumbnail__link:hover {
@@ -2009,7 +2009,7 @@ textarea {
   box-shadow: -1px -1px 2px #eeeeee;
 }
 .tag-cloud__item:hover {
-  color: #333333;
+  color: #444;
 }
 .widget_gallery ul {
   display: flex;
@@ -2048,7 +2048,7 @@ textarea {
 }
 .contact-form__field {
   margin-bottom: 10px;
-  color: #333333;
+  color: #444;
   border: 1px solid #eeeeee;
 }
 .contact-form__field--contact {
@@ -2648,7 +2648,7 @@ textarea {
   margin-bottom: 8px;
 }
 .listing__title a {
-  color: #333333;
+  color: #444;
   font-size: 16px;
   transition: 0.3s color ease-out;
 }
@@ -2660,7 +2660,7 @@ textarea {
 }
 .listing__stats {
   margin-bottom: 10px;
-  color: #333333;
+  color: #444;
   font-size: 10px;
   text-transform: uppercase;
 }
@@ -2727,7 +2727,7 @@ textarea {
 .main-listing__form-title {
   display: inline-block;
   margin-bottom: 5px;
-  color: #333333;
+  color: #444;
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   font-size: 15px;
   font-weight: 700;
@@ -2739,7 +2739,7 @@ textarea {
 }
 .main-listing__form-label {
   display: inline-block;
-  color: #333333;
+  color: #444;
   font-size: 13px;
   text-transform: uppercase;
   cursor: pointer;
@@ -2946,7 +2946,7 @@ textarea {
   }
 }
 .open-houses__agency {
-  color: #333333;
+  color: #444;
   text-transform: uppercase;
 }
 .main-listing__grid {
@@ -3114,7 +3114,7 @@ textarea {
 }
 .testimonial__customer-name {
   margin-bottom: 5px;
-  color: #333333;
+  color: #444;
   font-size: 17px;
 }
 .testimonial__customer-company {
@@ -3186,7 +3186,7 @@ textarea {
   font-size: 18px;
 }
 .famous-agents__name a {
-  color: #333333;
+  color: #444;
   transition: 0.3s color ease-out;
 }
 .famous-agents__name a:hover {
@@ -3295,7 +3295,7 @@ textarea {
 }
 .popular-links__header {
   margin-bottom: 25px;
-  color: #333333;
+  color: #444;
   font-size: 18px;
 }
 .popular-links__single {
@@ -3428,7 +3428,7 @@ textarea {
 .news__date,
 .news__my {
   display: block;
-  color: #333333;
+  color: #444;
 }
 .news__date {
   font-family: 'Raleway', Helvetica, Arial, sans-serif;
@@ -3488,7 +3488,7 @@ textarea {
   font-size: 18px;
 }
 .news__title a {
-  color: #333333;
+  color: #444;
   transition: 0.3s color ease-out;
 }
 .news__title a:hover {
@@ -3588,7 +3588,7 @@ textarea {
 .news__desc {
   display: block;
   margin-bottom: 14px;
-  color: #333333;
+  color: #444;
   font-size: 18px;
   text-transform: uppercase;
   font-weight: 500;
@@ -3636,7 +3636,7 @@ textarea {
   color: #666666;
 }
 .news__author-more {
-  color: #333333;
+  color: #444;
   text-decoration: underline;
 }
 .news__tags {
@@ -3645,7 +3645,7 @@ textarea {
 }
 .news__tags-icon {
   padding-right: 5px;
-  color: #333333;
+  color: #444;
   font-size: 18px;
 }
 .news__tag {
@@ -3798,7 +3798,7 @@ textarea {
   }
 }
 .comment-author a {
-  color: #333333;
+  color: #444;
 }
 .comment-date {
   color: #999999;
@@ -3808,9 +3808,9 @@ textarea {
 .comment-reply a {
   display: inline-block;
   margin-left: 15px;
-  border: 1px solid #333333;
+  border: 1px solid #444;
   padding: 1px 11px;
-  color: #333333;
+  color: #444;
   font-weight: 500;
 }
 .comment-respond-title {
@@ -3872,7 +3872,7 @@ textarea {
   color: #007bff;
 }
 .ht-breadcrumbs__page {
-  color: #333333;
+  color: #444;
 }
 /* 4.25. Agents With Info / .agents-with-info
 ***********************/
@@ -4085,7 +4085,7 @@ textarea {
 }
 .about-us p {
   margin-bottom: 30px;
-  color: #333333;
+  color: #444;
 }
 .about-us__img {
   margin-bottom: 30px;
@@ -4184,7 +4184,7 @@ textarea {
 }
 .pagination__link {
   display: inline-block;
-  color: #333333;
+  color: #444;
   width: 40px;
   height: 40px;
   line-height: 40px;
@@ -4288,7 +4288,7 @@ textarea {
   font-size: 13px;
 }
 .listing-search__field::placeholder {
-  color: #333333;
+  color: #444;
   font-size: 13px;
 }
 .listing-search__advance {
@@ -4381,7 +4381,7 @@ textarea {
   position: relative;
   padding: 15px;
   background-color: #ffffff;
-  color: #333333;
+  color: #444;
   font-size: 13px;
 }
 .listing-sort--main-listing {
@@ -4418,10 +4418,10 @@ textarea {
   color: #bbbbbb;
 }
 .listing-sort__link:hover {
-  color: #333333;
+  color: #444;
 }
 .listing-sort__link--active {
-  color: #333333;
+  color: #444;
 }
 .listing-sort__result {
   display: inline-block;
@@ -4555,7 +4555,7 @@ textarea {
   width: 30px;
   height: 30px;
   background-color: #ffffff;
-  color: #333333;
+  color: #444;
   font-size: 18px;
   line-height: 30px;
   text-align: center;
@@ -4639,7 +4639,7 @@ textarea {
 .property__figure {
   display: block;
   margin-bottom: -2px;
-  color: #333333;
+  color: #444;
   font-size: 24px;
 }
 .property__price-primary {
@@ -4841,7 +4841,7 @@ textarea {
   font-size: 8px;
 }
 .property__details-item--cat {
-  color: #333333;
+  color: #444;
   font-weight: 500;
 }
 @media only screen and (min-width: 30em) {
@@ -4863,7 +4863,7 @@ textarea {
 .property__features-icon {
   display: inline-block;
   margin-right: 10px;
-  color: #333333;
+  color: #444;
 }
 .property__accordion-header {
   padding: 10px 15px;
@@ -4891,7 +4891,7 @@ textarea {
   }
 }
 .property__accordion-title {
-  color: #333333;
+  color: #444;
   font-size: 16px;
   font-weight: 500;
 }
@@ -4928,7 +4928,7 @@ textarea {
   }
 }
 .property__accordion-figure--cat {
-  color: #333333;
+  color: #444;
   font-weight: 500;
 }
 .property__accordion-expand {
@@ -4959,11 +4959,11 @@ textarea {
   border-bottom: 3px solid transparent;
 }
 .property__tab:hover {
-  color: #333333;
+  color: #444;
   border-bottom: 3px solid #007bff;
 }
 .property__tab--active {
-  color: #333333;
+  color: #444;
   border-bottom: 3px solid #007bff;
 }
 @media only screen and (min-width: 992px) {
@@ -4996,7 +4996,7 @@ textarea {
   min-width: 150px;
 }
 .property__tab-content td {
-  color: #333333;
+  color: #444;
   padding: 15px 0;
 }
 .property__tab-content th {
@@ -5067,14 +5067,14 @@ textarea {
   font-size: 18px;
 }
 .contact-name a {
-  color: #333333;
+  color: #444;
   transition: 0.3s color ease-out;
 }
 .contact-name a:hover {
   color: #007bff;
 }
 .contact-number {
-  color: #333333;
+  color: #444;
   font-size: 13px;
   text-transform: uppercase;
   transition: 0.3s color ease-out;
@@ -5173,7 +5173,7 @@ div.similar-home:last-of-type {
   font-size: 16px;
 }
 .form-calculator__field {
-  color: #333333;
+  color: #444;
 }
 .form-calculator__percent {
   right: 20px;
@@ -5638,7 +5638,7 @@ div.similar-home:last-of-type {
   position: absolute;
   left: 0;
   display: inline-block;
-  color: #333333;
+  color: #444;
   font-size: 16px;
 }
 .setting:hover .setting__icon,
@@ -5646,7 +5646,7 @@ div.similar-home:last-of-type {
   color: #007bff;
 }
 .setting__link {
-  color: #333333;
+  color: #444;
 }
 .setting:hover .setting__link,
 .setting--current .setting__link {
@@ -5695,7 +5695,7 @@ div.similar-home:last-of-type {
 }
 .manage-list__action a {
   display: block;
-  color: #333333;
+  color: #444;
   font-weight: 500;
 }
 .manage-list__action a:hover {
@@ -5760,14 +5760,14 @@ div.similar-home:last-of-type {
   color: #666666;
 }
 .sign-up__tab.is-active {
-  color: #333333;
+  color: #444;
   font-weight: 700;
   border-bottom: 1px solid #007bff;
 }
 .sign-up__label {
   display: block;
   margin-bottom: 8px;
-  color: #333333;
+  color: #444;
   font-weight: 700;
 }
 .sign-up__field {
@@ -5802,7 +5802,7 @@ div.similar-home:last-of-type {
   color: #999999;
 }
 .sign-up__desc a {
-  color: #333333;
+  color: #444;
   border-bottom: 1px solid #007bff;
 }
 .sign-up__form {
@@ -5858,7 +5858,7 @@ div.similar-home:last-of-type {
 .my-profile__label {
   display: block;
   margin-bottom: 10px;
-  color: #333333;
+  color: #444;
   font-weight: 500;
 }
 .my-profile__field {
@@ -5927,7 +5927,7 @@ div.similar-home:last-of-type {
 .submit-property__label {
   display: inline-block;
   margin-bottom: 10px;
-  color: #333333;
+  color: #444;
   font-weight: 500;
 }
 .submit-property__unit {

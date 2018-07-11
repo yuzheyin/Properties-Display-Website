@@ -5,8 +5,8 @@
 }
 
 .front{
-    height: 100%;
-    width: 100%;
+    height: auto;
+    width: 850px;
     object-fit: contain;
 }
 

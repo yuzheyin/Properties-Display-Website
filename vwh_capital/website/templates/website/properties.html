@@ -21,11 +21,11 @@
 
 
 
-                                {% for prop in similar %}
-                                <div class="col-md-12" >
+                                {% for prop in most_viewed %}
+                                <div class="col-md-12" style="margin-bottom:20px;" >
                                     <a href="{% url 'details' prop.id %}">
-                                        <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="position:relative;">
-                                        <div style="background-color:#002053;opacity:0.65;position:absolute;left:15px;top:120px;width:89%">
+                                        <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="position:relative;height:180px;width:auto; margin: 0 auto 1em auto;">
+                                        <div style="background-color:#002053;opacity:0.65;position:absolute;left:15px;top:150px;width:89%">
                                         <p style="color:white; text-align:center;"> {{prop.address}} </p></div>
                                     </a>
                                 </div>

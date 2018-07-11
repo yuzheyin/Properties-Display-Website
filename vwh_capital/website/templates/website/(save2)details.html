@@ -20,11 +20,11 @@
                         <div class="container">
                             <div class="row justify-content-md-center">
 
-                                {% for prop in most_viewed %}
-                                <div class="col-md-12" style="margin-bottom:20px;" >
+                                {% for prop in similar %}
+                                <div class="col-md-12" >
                                     <a href="{% url 'details' prop.id %}">
-                                        <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="position:relative;height:180px;width:auto; margin: 0 auto 1em auto;">
-                                        <div style="background-color:#002053;opacity:0.65;position:absolute;left:15px;top:150px;width:89%">
+                                        <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="position:relative;">
+                                        <div style="background-color:#002053;opacity:0.65;position:absolute;left:15px;top:120px;width:89%">
                                         <p style="color:white; text-align:center;"> {{prop.address}} </p></div>
                                     </a>
                                 </div>
@@ -65,7 +65,7 @@
             <div class="row">
 
                 <div class="col-md-8">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="background:#333333">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="background:#002053">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -106,13 +106,13 @@
                 <br>
                 <br>
                 <div class="col-md-4 single-property-header">
-                    <h2 class="property-title" style="font-size:23px;margin:30px 0px 20px;"><strong>Property Description</strong></h2>
+                    <h2 class="property-title" style="font-size:23px;">Property Description</h2>
                     <p >{{property.description}}</p>
-                    <h2 class="property-title" style="font-size:23px;margin:50px 0px 20px;"><strong>Main Features</strong></h3>
+                    <h2 class="property-title" style="font-size:23px;margin-top:50px;">Main Features</h3>
                         <ul style="font-size:17px;color:#404040">
-                            <li style="background-color:#e6e6e6">  &nbsp;{{property.bedroom}}   &nbsp;Bedrooms</li>
+                            <li style="background-color:#cce0ff">  &nbsp;{{property.bedroom}}   &nbsp;Bedrooms</li>
                             <li>  &nbsp;{{property.bath}}   &nbsp; Bathrooms</li>
-                            <li style="background-color:#e6e6e6">  &nbsp;{{property.total_room}}   &nbsp; Total rooms</li>
+                            <li style="background-color:#cce0ff">  &nbsp;{{property.total_room}}   &nbsp; Total rooms</li>
                             <li>  &nbsp;{{property.size|intcomma}}   &nbsp;Sq Ft</li>
                         </ul>
                         <div style="margin-left:80px;margin-top:120px;">
@@ -293,29 +293,37 @@
 
             <!--<div class="single-property-header" style="margin-top:50px;">-->
 
+            <!--<h1 class="property-title">Features</h1>-->
+            <!--<ul>-->
+            <!--<li><a href="properties.html">Swimming Pool</a></li>-->
+            <!--<li><a href="properties.html">3 Stories</a></li>-->
+            <!--<li><a href="properties.html">Central Cooling</a></li>-->
+            <!--<li><a href="properties.html">Jog Path 2</a></li>-->
+            <!--<li><a href="properties.html">2 Lawn</a></li>-->
+            <!--<li><a href="properties.html">Bike Path</a></li>-->
+            <!--</ul>-->
+
             <!--</div>-->
             <!-- End features area  -->
-            <div class="single-property-header " >
-                <h3 class="property-title" style="margin: 60px 0px 50px;">Schedule A Visit</h3>
-                <div class="border border-secondary-top-bottom rounded" style="padding:20px 30px 20px;">
-                    <form class="property__form">
-                        <div class="row">
+            <div class="single-property-header" >
+              <h3 class="property-title" style="margin: 60px 0px 50px;">Schedule A Visit</h3>
+              <form class="property__form">
+                <div class="row">
 
-                            <div class="col-sm-6">
-                                <input name="name" class="property__form-field" placeholder="Your Name" required="" type="text">
-                            </div><!-- col -->
-                            <div class="col-sm-6">
-                                <input name="contact" class="property__form-field" placeholder="Your Email/Phone" required="" type="text">
-                            </div><!-- col -->
-                            <div class="col-sm-12">
-                                <textarea rows="4" name="message" class="property__form-field" placeholder="Message" required=""></textarea>
-                            </div><!-- col -->
-                            <div class="col-sm-12">
-                                <input name="submit" class="property__form-submit" value="Submit" type="submit">
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </form>
-                </div>
+                  <div class="col-sm-6">
+                    <input name="name" class="property__form-field" placeholder="Your Name" required="" type="text">
+                  </div><!-- col -->
+                  <div class="col-sm-6">
+                    <input name="contact" class="property__form-field" placeholder="Your Email/Phone" required="" type="text">
+                  </div><!-- col -->
+                  <div class="col-sm-12">
+                    <textarea rows="4" name="message" class="property__form-field" placeholder="Message" required=""></textarea>
+                  </div><!-- col -->
+                  <div class="col-sm-12">
+                    <input name="submit" class="property__form-submit" value="Submit" type="submit">
+                  </div><!-- .col -->
+                </div><!-- .row -->
+              </form>
             </div>
 
 
