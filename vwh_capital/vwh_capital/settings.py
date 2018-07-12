@@ -141,5 +141,14 @@ EMAIL_USE_SSL = True
 print('Email host:port = {host}:{port}, user={user}'.format(
     host=EMAIL_HOST, port=EMAIL_PORT, user=EMAIL_HOST_USER))
 
-# # Redirect url after successful login
+# Redirect url after successful login
 LOGIN_REDIRECT_URL = '/'
+
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+CSRF_USE_SESSIONS = True
+ECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
