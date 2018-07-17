@@ -13,7 +13,9 @@
           <!-- Slide One - Set the background image for this slide in the line below -->
           <!--<div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">-->
           <div class="carousel-item active" style="background-image: linear-gradient(180deg,#002053 0%,#2B4C87 100%) !important;">
+            {% if cover %}
             <center><img class="front" src="{%  url 'main_picture' cover.id %}" align="middle"></center>
+            {% endif %}
             <div class="carousel-caption d-none d-md-block">
               <h4 style="color:white;margin-top:10px;">{{cover.address}}</h4>
             </div>

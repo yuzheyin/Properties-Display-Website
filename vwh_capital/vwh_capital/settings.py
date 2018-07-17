@@ -26,7 +26,8 @@ SECRET_KEY = '0!@yfic#vo*n4%p6cs$0bshq@-u$@*sxrv(s$%^^0ghhcg8djg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['website.kc2cubazf2.us-west-2.elasticbeanstalk.com',
+                 '127.0.0.1']
 
 
 # Application definition
@@ -119,8 +120,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+# STATICFILES_DIRS = (
+#     os.path.join(os.path.normpath(BASE_DIR), "static")
+# )
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images/')
 MEDIA_URL ='/images/'
@@ -143,12 +149,15 @@ print('Email host:port = {host}:{port}, user={user}'.format(
 
 # Redirect url after successful login
 LOGIN_REDIRECT_URL = '/'
+#
+#
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
+# CSRF_COOKIE_SECURE = True
+# CSRF_USE_SESSIONS = True
+# ECURE_HSTS_SECONDS = 3600
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
 
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
-CSRF_COOKIE_SECURE = True
-CSRF_USE_SESSIONS = True
-ECURE_HSTS_SECONDS = 3600
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+SECURE_SSL_REDIRECT = False

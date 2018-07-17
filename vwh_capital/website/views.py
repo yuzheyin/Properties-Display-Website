@@ -89,7 +89,14 @@ def confirm_registration(request, username, token):
     user.is_active = True
     user.save()
     login(request, user)
-    return render(request, 'website/index.html', {})
+    most_viewed = Property.objects.order_by('-viewed_times')[1:4]
+    new_added = Property.objects.order_by('-creation_time')[:3]
+    context = {'most_viewed': most_viewed, 'new_added': new_added}
+    properties = Property.objects.order_by('-viewed_times')
+    if len(properties) != 0:
+        cover = Property.objects.order_by('-viewed_times')[0]
+        context += cover
+    return render(request, 'website/index.html', context)
 
 
 
@@ -124,11 +131,13 @@ def details(request, id):
 
 
 def home(request):
-    cover = Property.objects.order_by('-viewed_times')[0]
     most_viewed = Property.objects.order_by('-viewed_times')[1:4]
     new_added = Property.objects.order_by('-creation_time')[:3]
-    context = {'most_viewed': most_viewed, 'new_added': new_added, 'cover': cover}
-
+    context = {'most_viewed': most_viewed, 'new_added': new_added}
+    properties = Property.objects.order_by('-viewed_times')
+    if len(properties) != 0:
+        cover = Property.objects.order_by('-viewed_times')[0]
+        context += cover
     return render(request, 'website/index.html', context)
 
 
