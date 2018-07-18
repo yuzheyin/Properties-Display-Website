@@ -94,8 +94,8 @@ def confirm_registration(request, username, token):
     context = {'most_viewed': most_viewed, 'new_added': new_added}
     properties = Property.objects.order_by('-viewed_times')
     if len(properties) != 0:
-        cover = Property.objects.order_by('-viewed_times')[0]
-        context += cover
+        cover ={'cover': Property.objects.order_by('-viewed_times')[0]}
+        context.update(cover)
     return render(request, 'website/index.html', context)
 
 
@@ -103,7 +103,7 @@ def confirm_registration(request, username, token):
 @transaction.atomic
 def properties(request):
     properties = Property.objects.order_by('-creation_time')
-    most_viewed = Property.objects.order_by('-viewed_times')[:3]
+    most_viewed = Property.objects.order_by('-viewed_times')[:4]
     form = FilterForm()
     context = {'properties': properties, 'form': form, 'most_viewed': most_viewed}
 
@@ -136,8 +136,8 @@ def home(request):
     context = {'most_viewed': most_viewed, 'new_added': new_added}
     properties = Property.objects.order_by('-viewed_times')
     if len(properties) != 0:
-        cover = Property.objects.order_by('-viewed_times')[0]
-        context += cover
+        cover = {'cover': Property.objects.order_by('-viewed_times')[0]}
+        context.update(cover)
     return render(request, 'website/index.html', context)
 
 

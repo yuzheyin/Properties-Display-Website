@@ -27,7 +27,8 @@ SECRET_KEY = '0!@yfic#vo*n4%p6cs$0bshq@-u$@*sxrv(s$%^^0ghhcg8djg'
 DEBUG = True
 
 ALLOWED_HOSTS = ['website.kc2cubazf2.us-west-2.elasticbeanstalk.com',
-                 '127.0.0.1']
+                 '127.0.0.1',
+                 '18.237.101.149']
 
 
 # Application definition
@@ -79,8 +80,10 @@ WSGI_APPLICATION = 'vwh_capital.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django',
+        'USER': 'root',
+        'PASSWORD': 'vwhcapital',
     }
 }
 
