@@ -21,7 +21,7 @@
           <a href="{% url 'details' prop.id %}">
                 <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="position:relative;height:200px;">
                 <div style="background-color:#002053;opacity:0.65;position:absolute;left:15px;top:170px;width:90%">
-                <p style="color:white; text-align:center;"> {{prop.address}} </p></div>
+                <p style="color:white; text-align:center;"> {{prop.address.street_number}} {{prop.address.route}}, {{prop.address.locality.city}}, {{prop.address.locality.state}} </p></div>
             </a>
         </div>
         {% endfor %}

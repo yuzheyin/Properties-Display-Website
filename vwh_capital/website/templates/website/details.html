@@ -25,7 +25,7 @@
                                     <a href="{% url 'details' prop.id %}">
                                         <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="position:relative;height:180px;width:auto; margin: 0 auto 1em auto;">
                                         <div style="background-color:#002053;opacity:0.65;position:absolute;left:15px;top:150px;width:89%">
-                                        <p style="color:white; text-align:center;"> {{prop.address}} </p></div>
+                                        <p style="color:white; text-align:center;"> {{prop.address.street_number}} {{prop.address.route}}, {{prop.address.locality.city}}, {{prop.address.locality.state}} </p></div>
                                     </a>
                                 </div>
                                 {% endfor %}
@@ -76,7 +76,7 @@
                         <div class="carousel-inner">
 
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="{% url 'main_picture' property.id %}" alt="First slide" style="height:480px;">
+                                <img class="d-block w-100" src="{% url 'main_picture' property.id %}" alt="First slide" style="height:550px;">
                                 <div class="carousel-caption-new d-none d-md-block">
                                     <lable class="detail_pic" >{{property.address}}</lable>
                                 </div>
@@ -85,7 +85,7 @@
                             {% for pic in pictures %}
                             {% if pic.title != 'main' %}
                             <div class="carousel-item ">
-                                <img class="d-block w-100" src="{% url 'picture' pic.id %}" alt="First slide" style="height:520px;width:auto;margin: 0 auto 1em auto;">
+                                <img class="d-block w-100" src="{% url 'picture' pic.id %}" alt="First slide" style="height:550px;width:auto;margin: 0 auto 1em auto;">
                                 <div class="carousel-caption-new d-none d-md-block">
                                     <lable class="detail_pic" >{{pic.intro}}</lable>
                                 </div>
@@ -106,13 +106,13 @@
                 <br>
                 <br>
                 <div class="col-md-4 single-property-header">
-                    <h2 class="property-title" style="font-size:23px;margin:30px 0px 20px;"><strong>Property Description</strong></h2>
+                    <h2 class="property-title" style="font-size:20px;margin:30px 0px 20px;"><strong>Property Description</strong></h2>
                     <p >{{property.description}}</p>
-                    <h2 class="property-title" style="font-size:23px;margin:50px 0px 20px;"><strong>Main Features</strong></h3>
+                    <h2 class="property-title" style="font-size:20px;margin:50px 0px 20px;"><strong>Main Features</strong></h3>
                         <ul style="font-size:17px;color:#404040">
-                            <li style="background-color:#e6e6e6">  &nbsp;{{property.bedroom}}   &nbsp;Bedrooms</li>
+                            <li style="background-color:#d9d9d9">  &nbsp;{{property.bedroom}}   &nbsp;Bedrooms</li>
                             <li>  &nbsp;{{property.bath}}   &nbsp; Bathrooms</li>
-                            <li style="background-color:#e6e6e6">  &nbsp;{{property.total_room}}   &nbsp; Total rooms</li>
+                            <li style="background-color:#d9d9d9">  &nbsp;{{property.total_room}}   &nbsp; Total rooms</li>
                             <li>  &nbsp;{{property.size|intcomma}}   &nbsp;Sq Ft</li>
                         </ul>
                         <div style="margin-left:80px;margin-top:120px;">
