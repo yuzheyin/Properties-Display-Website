@@ -94,8 +94,8 @@ def confirm_registration(request, username, token):
     context = {'most_viewed': most_viewed, 'new_added': new_added}
     properties = Property.objects.order_by('-viewed_times')
     if len(properties) != 0:
-        cover = Property.objects.order_by('-viewed_times')[0]
-        context += cover
+        cover = {'cover': Property.objects.order_by('-viewed_times')[0]}
+        context.update(cover)
     return render(request, 'website/index.html', context)
 
 
@@ -136,8 +136,8 @@ def home(request):
     context = {'most_viewed': most_viewed, 'new_added': new_added}
     properties = Property.objects.order_by('-viewed_times')
     if len(properties) != 0:
-        cover = Property.objects.order_by('-viewed_times')[0]
-        context += cover
+        cover = {'cover': Property.objects.order_by('-viewed_times')[0]}
+        context.update(cover)
     return render(request, 'website/index.html', context)
 
 
