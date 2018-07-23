@@ -20,6 +20,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
 from django.core import serializers
 
@@ -102,8 +103,19 @@ def confirm_registration(request, username, token):
 
 @transaction.atomic
 def properties(request):
-    properties = Property.objects.order_by('-creation_time')
+    properties_all = Property.objects.order_by('-creation_time')
     most_viewed = Property.objects.order_by('-viewed_times')[:4]
+
+    paginator = Paginator(properties_all, 1)
+    page = request.GET.get('page', 1)
+
+    try:
+        properties = paginator.page(page)
+    except PageNotAnInteger:
+        properties = paginator.page(1)
+    except EmptyPage:
+        properties = paginator.page(paginator.num_pages)
+
     form = FilterForm()
     context = {'properties': properties, 'form': form, 'most_viewed': most_viewed}
 
