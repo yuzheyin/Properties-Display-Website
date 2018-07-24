@@ -307,12 +307,14 @@ $(document).ready(function () {
   
   $(".listing-search__property-size").slider({
     range: true,
-    min: 1000,
-    max: 8000,
+    min: 10000,
+    max: 1000000,
     step: 100,
-    values: [1000, 8000],
+    values: [10000, 1000000],
     slide: function (event, ui) {
       $("#property-amount").text(ui.values[0] + " - " + ui.values[1]);
+      $("#price_top").val(ui.values[1]);
+      $("#price_bottom").val(ui.values[0]);
     }
   });
 
@@ -320,12 +322,14 @@ $(document).ready(function () {
 
   $(".listing-search__lot-size").slider({
     range: true,
-    min: 1000,
-    max: 8000,
+    min: 100,
+    max: 5000,
     step: 100,
-    values: [1000, 8000],
+    values: [100, 5000],
     slide: function (event, ui) {
       $("#lot-amount").text(ui.values[0] + " - " + ui.values[1]);
+      $("#size_top").val(ui.values[1]);
+      $("#size_bottom").val(ui.values[0]);
     }
   });
 
@@ -335,9 +339,9 @@ $(document).ready(function () {
 
     $(this).toggleClass("js-hide");
     if ($(this).hasClass("js-hide")) {
-      $(this).text("Hide");
+      $("#advance").text("Hide");
     } else {
-      $(this).text("Advance Search");
+      $("#advance").text("Advance Search");
     }
 
     $(".listing-search__advance").slideToggle();

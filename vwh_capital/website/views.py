@@ -103,10 +103,102 @@ def confirm_registration(request, username, token):
 
 @transaction.atomic
 def properties(request):
-    properties_all = Property.objects.order_by('-creation_time')
+    # info = ""
+    # if 'basement' in request.GET:
+    #     info = request.GET['basement']
+    # else:
+    #     info = "No base !!!!"
+
+    if 'price_top' in request.GET and request.GET['price_top'] != "":
+        price_top = request.GET['price_top']
+    elif request.COOKIES.get('price_top'):
+        price_top = request.COOKIES.get('price_top')
+    else:
+        price_top = 10000000
+    if 'price_bottom' in request.GET and request.GET['price_bottom'] != "":
+        price_bottom = request.GET['price_bottom']
+    elif request.COOKIES.get('price_bottom'):
+        price_bottom = request.COOKIES.get('price_bottom')
+    else:
+        price_bottom = 0
+    if 'size_top' in request.GET and request.GET['size_top'] != "":
+        size_top = request.GET['size_top']
+    elif request.COOKIES.get('size_top'):
+        size_top = request.COOKIES.get('size_top')
+    else:
+        size_top = 10000000
+    if 'size_bottom' in request.GET and request.GET['size_bottom'] != "":
+        size_bottom = request.GET['size_bottom']
+    elif request.COOKIES.get('size_bottom'):
+        size_bottom = request.COOKIES.get('size_bottom')
+    else:
+        size_bottom = 0
+    if 'state' in request.GET and request.GET['state'] != "":
+        state = request.GET['state']
+    elif request.COOKIES.get('state'):
+        state = request.COOKIES.get('state')
+    else:
+        state = ""
+    if 'bedrooms' in request.GET and request.GET['bedrooms'] != "":
+        bedrooms = request.GET['bedrooms']
+    elif request.COOKIES.get('bedrooms'):
+        bedrooms = request.COOKIES.get('bedrooms')
+    else:
+        bedrooms = ""
+    if 'bathrooms' in request.GET and request.GET['bathrooms'] != "":
+        bathrooms = request.GET['bathrooms']
+    elif request.COOKIES.get('bathrooms'):
+        bathrooms = request.COOKIES.get('bathrooms')
+    else:
+        bathrooms = ""
+
+    if 'basement' in request.GET:
+        basement = request.GET['basement']
+    elif request.COOKIES.get('basement'):
+        basement = request.COOKIES.get('basement')
+    else:
+        basement = ""
+
+    if 'garage' in request.GET and request.GET['garage'] != "":
+        garage = request.GET['garage']
+    elif request.COOKIES.get('garage'):
+        garage = request.COOKIES.get('garage')
+    else:
+        garage = ""
+
+    if 'pool' in request.GET:
+        pool = request.GET['pool']
+    elif request.COOKIES.get('pool'):
+        pool = request.COOKIES.get('pool')
+    else:
+        pool = ""
+
+    # properties_all = Property.objects.order_by('-creation_time')
+
+    properties_all = Property.objects.filter(list_price__gte=int(price_bottom), list_price__lte=int(price_top),
+                                             size__lte=int(size_top), size__gte=int(size_bottom))
+
+    # if state != "":
+    #     properties_all = properties_all.filter(address__locality__state=state)
+
+    if bedrooms != "":
+        properties_all = properties_all.filter(bedroom__gte=int(bedrooms))
+
+    if bathrooms != "":
+        properties_all = properties_all.filter(bath__gte=int(bathrooms))
+
+    if basement == "on":
+        properties_all = properties_all.filter(basement=True)
+    info = garage
+    if garage != "":
+        properties_all = properties_all.filter(garage_stall__gte=0)
+    if pool == "on":
+        properties_all = properties_all.filter(pool=True)
+
+    properties_all = properties_all.order_by('-creation_time')
     most_viewed = Property.objects.order_by('-viewed_times')[:4]
 
-    paginator = Paginator(properties_all, 1)
+    paginator = Paginator(properties_all, 4)
     page = request.GET.get('page', 1)
 
     try:
@@ -117,9 +209,39 @@ def properties(request):
         properties = paginator.page(paginator.num_pages)
 
     form = FilterForm()
-    context = {'properties': properties, 'form': form, 'most_viewed': most_viewed}
+    context = {'properties': properties, 'form': form, 'most_viewed': most_viewed, 'info': info}
 
-    return render(request, 'website/properties.html', context)
+    response = render(request, 'website/properties.html', context)
+    response.set_cookie(key='price_top', value=price_top)
+    response.set_cookie(key='price_bottom', value=price_bottom)
+    response.set_cookie(key='size_top', value=size_top)
+    response.set_cookie(key='size_bottom', value=size_bottom)
+    response.set_cookie(key='state', value=state)
+    response.set_cookie(key='bedrooms', value=bedrooms)
+    response.set_cookie(key='bathrooms', value=bathrooms)
+    response.set_cookie(key='basement', value=basement)
+    response.set_cookie(key='garage', value=garage)
+    response.set_cookie(key='pool', value=pool)
+
+    return response
+
+# properties_all = Property.objects.order_by('-creation_time')
+#     most_viewed = Property.objects.order_by('-viewed_times')[:4]
+#
+#     paginator = Paginator(properties_all, 4)
+#     page = request.GET.get('page', 1)
+#
+#     try:
+#         properties = paginator.page(page)
+#     except PageNotAnInteger:
+#         properties = paginator.page(1)
+#     except EmptyPage:
+#         properties = paginator.page(paginator.num_pages)
+#
+#     form = FilterForm()
+#     context = {'properties': properties, 'form': form, 'most_viewed': most_viewed, 'info':info}
+#
+#     return render(request, 'website/properties.html', context)
 
 
 @login_required

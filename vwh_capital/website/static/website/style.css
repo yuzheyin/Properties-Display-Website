@@ -4213,7 +4213,7 @@ textarea {
 /* 4.36. Listing Search / .listing-search
 ***********************/
 .main-search {
-  background-color: #f6f6f6;
+  background-color: #e6e6e6;
   margin-top: 80px;
 }
 .main-search--static {
@@ -4275,13 +4275,14 @@ textarea {
   width: 100%;
   margin-bottom: 20px;
   padding: 10px;
-  background-color: #007bff;
+
   color: #ffffff;
   border-radius: 4px;
   text-transform: uppercase;
   text-align: center;
   font-weight: 500;
 }
+
 .listing-search__field {
   height: 41px;
   margin-bottom: 20px;
