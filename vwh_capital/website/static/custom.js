@@ -318,7 +318,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#property-amount").text($(".listing-search__property-size").slider("values", 0) + " - " + $(".listing-search__property-size").slider("values", 1));
+//  $("#property-amount").text($(".listing-search__property-size").slider("values", 0) + " - " + $(".listing-search__property-size").slider("values", 1));
 
   $(".listing-search__lot-size").slider({
     range: true,
@@ -333,7 +333,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#lot-amount").text($(".listing-search__lot-size").slider("values", 0) + " - " + $(".listing-search__lot-size").slider("values", 1));
+//  $("#lot-amount").text($(".listing-search__lot-size").slider("values", 0) + " - " + $(".listing-search__lot-size").slider("values", 1));
 
   $(".listing-search__btn").on('click', function () {
 

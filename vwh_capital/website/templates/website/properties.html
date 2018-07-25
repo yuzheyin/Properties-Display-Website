@@ -64,7 +64,13 @@
 								<div class="col-sm-3">
 									<label for="state" class="listing-search__label">Select State</label>
 									<select name="state" id="state" class="ht-field" data-dkcacheid="2">
-										<option value="All" selected="">All State</option>
+										{% if form.state == "" %}
+										<option value="" selected="">All State</option>
+										{% else %}
+											<option value="" >All State</option>
+											<option hidden selected>{{form.state}}</option>
+										{% endif %}
+
 										<option value="Florida">Florida</option>
 										<option value="Georgia">Georgia</option>
 										<option value="New York">New York</option>
@@ -72,7 +78,7 @@
 										<option value="Oklahoma">Oklahoma</option>
 										<option value="Michigan">Michigan</option>
 										<option value="Ohio">Ohio</option>
-										<option value="Georgia">Georgia</option>
+
 									</select>
 								</div><!-- .col -->
 
@@ -83,7 +89,7 @@
 
 								<div class="col-sm-3">
 
-									<button type="submit" class="btn btn-primary btn-md" style="margin-top:20px;width:240px;">Search <i class="material-icons md-18">search</i></button>
+									<button type="submit" class="btn btn-primary btn-md" style="font-size:15px;margin-top:20px;width:240px;">SEARCH <i class="material-icons md-18">search</i></button>
 								</div><!-- .col -->
 							</div><!-- row -->
 
@@ -93,7 +99,12 @@
 									<div class="col-sm-3">
 										<label for="bedrooms" class="listing-search__label">Bedrooms</label>
 										<select name="bedrooms" id="bedrooms" class="ht-field" data-dkcacheid="4">
-											<option value="0" selected="">Any</option>
+											{% if form.bedrooms == "" or form.bedrooms == '0' %}
+											    <option value="0" selected="">Any</option>
+											{% else %}
+												<option value="0" >Any</option>
+												<option hidden selected>{{form.bedrooms}}</option>
+											{% endif %}
 											<option value="1">1+ </option>
 											<option value="2">2+ </option>
 											<option value="3">3+ </option>
@@ -105,12 +116,18 @@
 									<div class="col-sm-3">
 										<label for="bathrooms" class="listing-search__label">Bathrooms</label>
 										<select name="bathrooms" id="bathrooms" class="ht-field" data-dkcacheid="5">
-											<option value="0" selected="">Any</option>
+											{% if form.bathrooms == "" or form.bathrooms == '0' %}
+											    <option value="0" selected="">Any</option>
+											{% else %}
+												<option value="0" >Any</option>
+											<option hidden selected>{{form.bathrooms}}</option>
+											{% endif %}
 											<option value="1">1+ </option>
 											<option value="2">2+ </option>
 											<option value="3">3+ </option>
 											<option value="4">4+ </option>
 											<option value="5">5+ </option>
+											<!--<option value="7" hidden selected>!!!</option>-->
 										</select>
 									</div><!-- .col -->
 
@@ -120,7 +137,11 @@
 										<label for="property-size" class="listing-search__label">Price Range</label>
 										<div class="listing-search__amount">
 											<label for="property-amount">$ </label>
-											<span id="property-amount">10000 - 1000000</span>
+											{% if form.price_top or form.price_bottom %}
+												<span id="property-amount" class="111">{{form.price_bottom}} - {{form.price_top}}</span>
+											{% else %}
+												<span id="property-amount">10000 - 1000000</span>
+											{% endif %}
 										</div><!-- listing-search__amount -->
 										<div id="property-size" class="listing-search__slider listing-search__property-size ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
 									</div><!-- .col -->
@@ -145,7 +166,7 @@
 										<div class="row">
 											<div class="col-sm-6 col-md-3">
 												<div class="listing-search__more-wrapper">
-													{% if request.COOKIES.garage == "on" %}
+													{% if form.garage == "on" %}
 													<input name="garage" id="garage" class="listing-search__more-field" type="checkbox" checked>
 													{% else %}
 													<input name="garage" id="garage" class="listing-search__more-field" type="checkbox">
@@ -154,7 +175,7 @@
 												</div><!-- .listing-search__more-wrapper -->
 
 												<div class="listing-search__more-wrapper">
-													{% if request.COOKIES.basement == "on" %}
+													{% if form.basement == "on" %}
 													<input name="basement" id="basement" class="listing-search__more-field" type="checkbox" checked>
 													{% else %}
 													<input name="basement" id="basement" class="listing-search__more-field" type="checkbox">
@@ -163,7 +184,7 @@
 												</div>
 
 												<div class="listing-search__more-wrapper">
-													{% if request.COOKIES.pool == "on" %}
+													{% if form.pool == "on" %}
 													<input name="pool" id="pool" class="listing-search__more-field" type="checkbox" checked>
 													{% else %}
 													<input name="pool" id="pool" class="listing-search__more-field" type="checkbox">
@@ -205,7 +226,7 @@
 			{% if info %}
 			{{info}}
 			{% endif %}
-			{{request.COOKIES.basement}}
+
 		</h1>
 
 		<div class="container">
