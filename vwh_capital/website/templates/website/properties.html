@@ -241,13 +241,6 @@
 			</div><!-- .container -->
 		</section>
 
-		<h1 style="color:red;margin-left:300px;">
-			{% if info %}
-			{{info}}
-			{% endif %}
-
-		</h1>
-
 		<div class="container">
 
 			<!-- Page Heading -->
@@ -256,9 +249,9 @@
 			</h1>
 
 			<div class="row">
-				{% if message != "" %}
+				{% if info != "" %}
 					<div class=" alert alert-info" style="padding-top:40px;margin:40px;height:100px;">
-					  <strong style="font-size:20px;">{{message}}</strong>
+					  <strong style="font-size:20px;">{{info}}</strong>
 
 					</div>
 				{% endif %}

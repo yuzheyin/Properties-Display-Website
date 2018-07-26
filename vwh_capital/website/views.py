@@ -299,9 +299,13 @@ def properties(request):
         properties = paginator.page(1)
     except EmptyPage:
         properties = paginator.page(paginator.num_pages)
-    info = keywords
+
     form = {'state': state, 'basement': basement, 'bathrooms': bathrooms, 'pool': pool, 'bedrooms': bedrooms, 'garage': garage,
             'price_top': price_top, 'price_bottom': price_bottom, 'size_top': size_top, 'size_bottom': size_bottom, 'sort': sort, 'keywords': keywords}
+
+    info = ""
+    if len(properties) == 0:
+        info = "Nothing found based on your searching criteria, please try again."
 
     context = {'properties': properties, 'form': form, 'most_viewed': most_viewed, 'info': info}
 
