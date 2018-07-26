@@ -87,8 +87,8 @@
 								</div><!-- .col -->
 
 								<div class="col-sm-3">
-									<label for="listing-btn" class="listing-search__label listing-search__label--hidden">Advanced Search</label>
-									<a href="#" id="listing-btn" class="listing-search__btn"><label id="advance">Advanced Options</label> <i class="material-icons md-18">menu</i></a>
+									<label for="listing-btn" class="listing-search__label listing-search__label--hidden">See Advanced Options</label>
+									<a href="#" id="listing-btn" class="listing-search__btn"><label id="advance">See Advanced Options</label> <i class="material-icons md-18">menu</i></a>
 								</div><!-- .col -->
 
 								<div class="col-sm-3">
@@ -213,7 +213,7 @@
 					<section class="listing-sort">
 						<div class="listing-sort__inner">
 
-							<span class="listing-sort__result">1-9 of 25 results</span>
+							<span class="listing-sort__result">  {{length}} result(s)</span>
 
 							<p class="listing-sort__sort">
 								<label for="sort" class="listing-sort__label"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i> Sort by </label>
@@ -249,9 +249,9 @@
 			</h1>
 
 			<div class="row">
-				{% if info != "" %}
-					<div class=" alert alert-info" style="padding-top:40px;margin:40px;height:100px;">
-					  <strong style="font-size:20px;">{{info}}</strong>
+				{% if length == 0 %}
+					<div class=" alert alert-info" style="padding:40px 70px 40px 70px;margin:40px;height:100px;">
+					  <strong style="font-size:20px;">Nothing found based on your searching criteria, please try again.</strong>
 
 					</div>
 				{% endif %}

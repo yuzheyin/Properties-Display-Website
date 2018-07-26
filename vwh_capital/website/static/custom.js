@@ -356,9 +356,9 @@ $(document).ready(function () {
 
     $(this).toggleClass("js-hide");
     if ($(this).hasClass("js-hide")) {
-      $("#advance").text("Hide");
+      $("#advance").text("Hide Advanced Options");
     } else {
-      $("#advance").text("Advance Search");
+      $("#advance").text("See Advanced Options");
     }
 
     $(".listing-search__advance").slideToggle();
