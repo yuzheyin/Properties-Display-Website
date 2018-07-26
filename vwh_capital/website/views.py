@@ -129,17 +129,17 @@ def properties(request):
         if 'price_bottom' in request.GET and request.GET['price_bottom'] != "":
             price_bottom = request.GET['price_bottom']
         else:
-            price_bottom = 0
+            price_bottom = 10000
 
         if 'size_top' in request.GET and request.GET['size_top'] != "":
             size_top = request.GET['size_top']
         else:
-            size_top = 10000000
+            size_top = 5000
 
         if 'size_bottom' in request.GET and request.GET['size_bottom'] != "":
             size_bottom = request.GET['size_bottom']
         else:
-            size_bottom = 0
+            size_bottom = 100
 
         if 'state' in request.GET and request.GET['state'] != "":
             state = request.GET['state']
@@ -171,6 +171,11 @@ def properties(request):
         else:
             pool = ""
 
+        if 'keywords' in request.GET and request.GET['keywords'] != "":
+            keywords = request.GET['keywords']
+        else:
+            keywords = ""
+
     else:
 
         if request.COOKIES.get('price_top'):
@@ -181,17 +186,17 @@ def properties(request):
         if request.COOKIES.get('price_bottom'):
             price_bottom = request.COOKIES.get('price_bottom')
         else:
-            price_bottom = 0
+            price_bottom = 10000
 
         if request.COOKIES.get('size_top'):
             size_top = request.COOKIES.get('size_top')
         else:
-            size_top = 10000000
+            size_top = 5000
 
         if request.COOKIES.get('size_bottom'):
             size_bottom = request.COOKIES.get('size_bottom')
         else:
-            size_bottom = 0
+            size_bottom = 100
 
         if request.COOKIES.get('state'):
             state = request.COOKIES.get('state')
@@ -223,8 +228,34 @@ def properties(request):
         else:
             pool = ""
 
-    properties_all = Property.objects.filter(list_price__gte=int(price_bottom), list_price__lte=int(price_top),
-                                             size__lte=int(size_top), size__gte=int(size_bottom))
+        if request.COOKIES.get('keywords'):
+            keywords = request.COOKIES.get('keywords')
+        else:
+            keywords = ""
+
+    # Check if user changed sorting criteria
+    if 'sort' in request.GET:
+        sort = request.GET['sort']
+    elif request.COOKIES.get('sort'):
+        sort = request.COOKIES.get('sort')
+    else:
+        sort = 'time'
+
+    # properties_all = Property.objects.filter(list_price__gte=int(price_bottom), list_price__lte=int(price_top),
+    #                                          size__lte=int(size_top), size__gte=int(size_bottom))
+
+    properties_all = Property.objects.all()
+    if int(price_bottom) != 10000:
+        properties_all = Property.objects.filter(list_price__gte=int(price_bottom))
+
+    if int(price_top) != 1000000:
+        properties_all = Property.objects.filter(list_price__lte=int(price_top))
+
+    if int(size_bottom) != 100:
+        properties_all = Property.objects.filter(size__gte=int(size_bottom))
+
+    if int(size_top) != 5000:
+        properties_all = Property.objects.filter(size__lte=int(size_top))
 
     if state != "":
         state_brief = states[state]
@@ -244,7 +275,19 @@ def properties(request):
     if pool == "on":
         properties_all = properties_all.filter(pool=True)
 
-    properties_all = properties_all.order_by('-creation_time')
+    if len(keywords) > 0:
+        properties_all = properties_all.filter(Q(description__icontains=keywords) | Q(address__route__icontains=keywords)
+                                               | Q(address__locality__city__icontains=keywords))
+
+    if sort == 'most_view':
+        properties_all = properties_all.order_by('-viewed_times')
+    elif sort == 'low_price':
+        properties_all = properties_all.order_by('list_price')
+    elif sort == 'high_price':
+        properties_all = properties_all.order_by('-list_price')
+    else:
+        properties_all = properties_all.order_by('-creation_time')
+
     most_viewed = Property.objects.order_by('-viewed_times')[:4]
 
     paginator = Paginator(properties_all, 4)
@@ -256,9 +299,9 @@ def properties(request):
         properties = paginator.page(1)
     except EmptyPage:
         properties = paginator.page(paginator.num_pages)
-    info = price_top
+    info = keywords
     form = {'state': state, 'basement': basement, 'bathrooms': bathrooms, 'pool': pool, 'bedrooms': bedrooms, 'garage': garage,
-            'price_top': price_top, 'price_bottom': price_bottom, 'size_top': size_top, 'size_bottom': size_bottom}
+            'price_top': price_top, 'price_bottom': price_bottom, 'size_top': size_top, 'size_bottom': size_bottom, 'sort': sort, 'keywords': keywords}
 
     context = {'properties': properties, 'form': form, 'most_viewed': most_viewed, 'info': info}
 
@@ -273,6 +316,8 @@ def properties(request):
     response.set_cookie(key='basement', value=basement)
     response.set_cookie(key='garage', value=garage)
     response.set_cookie(key='pool', value=pool)
+    response.set_cookie(key='sort', value=sort)
+    response.set_cookie(key='keywords', value=keywords)
 
     return response
 

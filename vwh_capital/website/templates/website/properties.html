@@ -58,7 +58,11 @@
 							<div class="row">
 								<div class="col-sm-3">
 										<label for="keywords" class="listing-search__label">Keyword</label>
-										<input id="keywords" class="listing-search__field" placeholder="Type city/street ..." type="text">
+										{% if form.keyword != "" %}
+											<input id="keywords" name="keywords" class="listing-search__field" type="text" value="{{form.keywords}}">
+										{% else %}
+											<input id="keywords" name="keywords" class="listing-search__field" placeholder="Type city/street ..." type="text">
+										{% endif %}
 								</div><!-- .col -->
 
 								<div class="col-sm-3">
@@ -145,18 +149,22 @@
 										</div><!-- listing-search__amount -->
 										<div id="property-size" class="listing-search__slider listing-search__property-size ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
 									</div><!-- .col -->
-									<input hidden id="price_top" name="price_top">
-									<input hidden id="price_bottom" name="price_bottom">
+									<input hidden id="price_top" name="price_top" value="{{form.price_top}}">
+									<input hidden id="price_bottom" name="price_bottom" value="{{form.price_bottom}}">
 									<div class="col-sm-6">
 										<label for="lot-size" class="listing-search__label">Living Size Range</label>
 										<div class="listing-search__amount">
 											<label for="lot-amount">Sq.Ft </label>
-											<span id="lot-amount">100 - 5000</span>
+											{% if form.size_top or form.size_bottom %}
+												<span id="lot-amount">{{form.size_bottom}} - {{form.size_top}}</span>
+											{% else %}
+												<span id="lot-amount">100 - 5000</span>
+											{% endif %}
 										</div><!-- .listing-search__amount -->
 										<div id="lot-size" class="listing-search__slider listing-search__lot-size ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
 									</div><!-- .col -->
-									<input hidden id="size_top" name="size_top">
-									<input hidden id="size_bottom" name="size_bottom">
+									<input hidden id="size_top" name="size_top" value="{{form.size_top}}">
+									<input hidden id="size_bottom" name="size_bottom" value="{{form.size_bottom}}">
 								</div>
 
 								<div class="listing-search__more">
@@ -208,13 +216,24 @@
 							<span class="listing-sort__result">1-9 of 25 results</span>
 
 							<p class="listing-sort__sort">
-								<label for="sort-type" class="listing-sort__label"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i> Sort by </label>
-								<select name="sort-type" id="sort-type" class="ht-field listing-sort__field" data-dkcacheid="8">
-									<option value="default">Adding Time</option>
-									<option value="low-price">Price (Low to High)</option>
-									<option value="high-price">Price (High to Low)</option>
-									<option value="featured">Most Viewed</option>
+								<label for="sort" class="listing-sort__label"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i> Sort by </label>
+								<form action="{% url 'properties' %}" method="get">
+								<select name="sort" id="sort" class="ht-field listing-sort__field" data-dkcacheid="8" onchange="this.form.submit()">
+									<option value="time" >Adding Time (New to Old)</option>
+									<option value="low_price">Price (Low to High)</option>
+									<option value="high_price">Price (High to Low)</option>
+									<option value="most_view">Most Viewed</option>
+									{% if form.sort == "time" %}
+										<option hidden selected>Adding Time (New to Old)</option>
+									{% elif form.sort == "low_price" %}
+									 	<option hidden selected>Price (Low to High)</option>
+									{% elif form.sort == "high_price" %}
+										<option hidden selected>Price (High to Low)</option>
+									{% elif form.sort == "most_view" %}
+									    <option hidden selected>Most Viewed</option>
+									{% endif %}
 								</select>
+								</form>
 							</p>
 						</div><!-- .listing-sort__inner -->
 					</section><!-- .listing-sort -->
@@ -237,6 +256,13 @@
 			</h1>
 
 			<div class="row">
+				{% if message != "" %}
+					<div class=" alert alert-info" style="padding-top:40px;margin:40px;height:100px;">
+					  <strong style="font-size:20px;">{{message}}</strong>
+
+					</div>
+				{% endif %}
+
 				{% for property in properties %}
 				<div class="col-md-6 item-grid__container">
 					<div class="listing">

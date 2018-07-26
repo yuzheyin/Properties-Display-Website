@@ -304,12 +304,13 @@ $(document).ready(function () {
   $(".ht-field").dropkick({
     mobile: true,
   });
-  
+
+
   $(".listing-search__property-size").slider({
     range: true,
     min: 10000,
     max: 1000000,
-    step: 100,
+    step: 10000,
     values: [10000, 1000000],
     slide: function (event, ui) {
       $("#property-amount").text(ui.values[0] + " - " + ui.values[1]);
@@ -319,6 +320,14 @@ $(document).ready(function () {
   });
 
 //  $("#property-amount").text($(".listing-search__property-size").slider("values", 0) + " - " + $(".listing-search__property-size").slider("values", 1));
+  $("#price_top").change(function(){
+        $(".listing-search__property-size").slider('values',0,$(this).val());
+  });
+
+  $("#price_bottom").change(function(){
+        $(".listing-search__property-size").slider('values',1,$(this).val());
+  });
+
 
   $(".listing-search__lot-size").slider({
     range: true,
@@ -334,6 +343,14 @@ $(document).ready(function () {
   });
 
 //  $("#lot-amount").text($(".listing-search__lot-size").slider("values", 0) + " - " + $(".listing-search__lot-size").slider("values", 1));
+  $("#size_top").change(function(){
+        $(".listing-search__lot-size").slider('values',0,$(this).val());
+  });
+
+  $("#size_bottom").change(function(){
+        $(".listing-search__lot-size").slider('values',1,$(this).val());
+  });
+
 
   $(".listing-search__btn").on('click', function () {
 
