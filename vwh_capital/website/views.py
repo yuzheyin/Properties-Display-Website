@@ -124,7 +124,7 @@ def properties(request):
         if 'price_top' in request.GET and request.GET['price_top'] != "":
             price_top = request.GET['price_top']
         else:
-            price_top = 10000000
+            price_top = 1000000
 
         if 'price_bottom' in request.GET and request.GET['price_bottom'] != "":
             price_bottom = request.GET['price_bottom']
@@ -181,7 +181,7 @@ def properties(request):
         if request.COOKIES.get('price_top'):
             price_top = request.COOKIES.get('price_top')
         else:
-            price_top = 10000000
+            price_top = 1000000
 
         if request.COOKIES.get('price_bottom'):
             price_bottom = request.COOKIES.get('price_bottom')
@@ -304,7 +304,7 @@ def properties(request):
     form = {'state': state, 'basement': basement, 'bathrooms': bathrooms, 'pool': pool, 'bedrooms': bedrooms, 'garage': garage,
             'price_top': price_top, 'price_bottom': price_bottom, 'size_top': size_top, 'size_bottom': size_bottom, 'sort': sort, 'keywords': keywords}
 
-    length = len(properties)
+    length = len(properties_all)
     context = {'properties': properties, 'form': form, 'most_viewed': most_viewed, 'length': length}
 
     response = render(request, 'website/properties.html', context)

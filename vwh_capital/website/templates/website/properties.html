@@ -137,6 +137,10 @@
 										</select>
 									</div><!-- .col -->
 
+									<div class="col-sm-3">
+									<button class="btn btn-primary btn-md" id="reset" style="font-size:15px;margin-top:20px;width:240px;">Reset All</button>
+									</div><!-- .col -->
+
 								</div><!-- .row -->
 								<div class="row">
 									<div class="col-sm-6">
@@ -327,6 +331,22 @@
 	<!-- /#page-content-wrapper -->
 
 </div>
+<script>
+	$("#reset").click(function(){
+		$("#state").val("");
+		$("#keywords").val("");
+		$("#bedrooms").val('0');
+		$("#bathrooms").val('0');
+		$("#garage").prop('checked', false);
+		$("#basement").prop('checked', false);
+		$("#pool").prop('checked', false);
+		$("#price_top").val('1000000');
+		$("#price_bottom").val('10000');
+		$("#size_top").val('5000');
+		$("#size_bottom").val('100');
+	});
+
+</script>
 
 <!-- /.container -->
 
