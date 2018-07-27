@@ -246,16 +246,16 @@ def properties(request):
 
     properties_all = Property.objects.all()
     if int(price_bottom) != 10000:
-        properties_all = Property.objects.filter(list_price__gte=int(price_bottom))
+        properties_all = properties_all.filter(list_price__gte=int(price_bottom))
 
     if int(price_top) != 1000000:
-        properties_all = Property.objects.filter(list_price__lte=int(price_top))
+        properties_all = properties_all.filter(list_price__lte=int(price_top))
 
     if int(size_bottom) != 100:
-        properties_all = Property.objects.filter(size__gte=int(size_bottom))
+        properties_all = properties_all.filter(size__gte=int(size_bottom))
 
     if int(size_top) != 5000:
-        properties_all = Property.objects.filter(size__lte=int(size_top))
+        properties_all = properties_all.filter(size__lte=int(size_top))
 
     if state != "":
         state_brief = states[state]
@@ -277,7 +277,8 @@ def properties(request):
 
     if len(keywords) > 0:
         properties_all = properties_all.filter(Q(description__icontains=keywords) | Q(address__route__icontains=keywords)
-                                               | Q(address__locality__city__icontains=keywords))
+                                               | Q(address__locality__city__icontains=keywords)| Q(address__street_number__icontains=keywords)
+                                               | Q(address__locality__postal_code__icontains=keywords))
 
     if sort == 'most_view':
         properties_all = properties_all.order_by('-viewed_times')
@@ -304,7 +305,6 @@ def properties(request):
             'price_top': price_top, 'price_bottom': price_bottom, 'size_top': size_top, 'size_bottom': size_bottom, 'sort': sort, 'keywords': keywords}
 
     length = len(properties)
-
     context = {'properties': properties, 'form': form, 'most_viewed': most_viewed, 'length': length}
 
     response = render(request, 'website/properties.html', context)
