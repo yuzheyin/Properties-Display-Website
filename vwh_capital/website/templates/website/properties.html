@@ -20,15 +20,16 @@
                         <div class="container">
                             <div class="row justify-content-md-center">
 
-
-
                                 {% for prop in most_viewed %}
                                 <div class="col-md-12" style="margin-bottom:20px;" >
                                     <a href="{% url 'details' prop.id %}">
-                                        <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="position:relative;height:180px;width:auto; margin: 0 auto 1em auto;">
-                                        <div style="background-color:#002053;opacity:0.65;position:absolute;left:15px;top:150px;width:89%">
+										<div style="height:95%;width:100%;">
+                                        <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="object-fit: cover;">
+											<div style="background-color:#002053;opacity:0.65;width:100%;">
                                         <p style="color:white; text-align:center;"> {{prop.address.street_number}} {{prop.address.route}}, {{prop.address.locality.city}}, {{prop.address.locality.state}} </p></div>
-                                    </a>
+
+										</div>
+                                        </a>
                                 </div>
                                 {% endfor %}
 
@@ -51,9 +52,10 @@
 
 	<!-- Page Content -->
 
-	<div id="page-content-wrapper">
+	<div id="page-content-wrapper" style="padding-left:100px;">
 		<section class="main-search">
 			<div class="container">
+				<div class="main-search__container">
 				<div class="main-search__container">
 					<section class="listing-search">
 						<form action="{% url 'properties' %}" method="get" class="listing-search__form">

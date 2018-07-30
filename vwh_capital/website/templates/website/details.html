@@ -23,10 +23,13 @@
                                 {% for prop in most_viewed %}
                                 <div class="col-md-12" style="margin-bottom:20px;" >
                                     <a href="{% url 'details' prop.id %}">
-                                        <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="position:relative;height:180px;width:auto; margin: 0 auto 1em auto;">
-                                        <div style="background-color:#002053;opacity:0.65;position:absolute;left:15px;top:150px;width:89%">
+										<div style="height:95%;width:100%;">
+                                        <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="object-fit: cover;">
+											<div style="background-color:#002053;opacity:0.65;width:100%;">
                                         <p style="color:white; text-align:center;"> {{prop.address.street_number}} {{prop.address.route}}, {{prop.address.locality.city}}, {{prop.address.locality.state}} </p></div>
-                                    </a>
+
+										</div>
+                                        </a>
                                 </div>
                                 {% endfor %}
 
@@ -46,13 +49,13 @@
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
-    <div id="page-content-wrapper">
+    <div id="page-content-wrapper" style="padding-left:100px;">
         <!--<div class="container-fluid sticky-top" >-->
         <!--<a href="#menu-toggle" class="btn btn-primary" id="menu-toggle"> <i class="material-icons md-36">search</i> <br> Search</a>-->
         <!--</div>-->
 
         <!-- Page Content -->
-        <div class="container" style="margin-top:100px;">
+        <div class="container">
 
             <!-- Portfolio Item Heading -->
             <h1 class="my-4" style="color:#002053">{{property.address.street_number}} {{property.address.route}}, {{property.address.locality.city}}, {{property.address.locality.state}}

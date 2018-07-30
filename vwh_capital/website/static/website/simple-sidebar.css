@@ -107,10 +107,10 @@ body {
   }
   #sidebar-wrapper {
     width: 0;
-    margin-top:60px;
+
   }
   #wrapper.toggled #sidebar-wrapper {
-    width: 260px;
+    width:14%;
   }
   #page-content-wrapper {
     padding: 20px;

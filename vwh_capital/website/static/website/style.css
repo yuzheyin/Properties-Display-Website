@@ -75,6 +75,8 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -2529,6 +2531,7 @@ textarea {
 }
 .listing img {
   width: 100%;
+  object-fit: cover;
 }
 .listing__logo {
   max-width: 100%;
@@ -4214,7 +4217,7 @@ textarea {
 ***********************/
 .main-search {
   background-color: #e6e6e6;
-  margin-top: 80px;
+
 }
 .main-search--static {
   padding-top: 0px;
