@@ -56,6 +56,12 @@
 
         <!--<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">-->
       <style>
+       @media screen and (min-width: 801px){
+       #page-content-wrapper {
+                padding-left: 30px;
+             }
+       }
+
           @media screen and (max-width: 800px){
              #sidebar-wrapper {
                 display: none;
@@ -64,6 +70,7 @@
              #page-content-wrapper {
                 margin-left: 0px;
                 padding-top:60px;
+                padding-left: 0;
              }
              #index {
                 padding-top:60px;
