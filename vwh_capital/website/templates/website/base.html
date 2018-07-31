@@ -9,12 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <script src="{% static 'website/jquery/jquery.min.js' %}"></script>
-      <script>
+      <style>
       img {
         object-fit: cover;
       }
 
-      </script>
+      </style>
     <title>VWH Properties</title>
 
     <!-- Bootstrap core CSS -->
@@ -55,7 +55,22 @@
       <link rel="stylesheet" href="{% static 'website/plugins.css' %}">
 
         <!--<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">-->
+      <style>
+          @media screen and (max-width: 800px){
+             #sidebar-wrapper {
+                display: none;
+             }
 
+             #page-content-wrapper {
+                margin-left: 0px;
+                padding-top:200px;
+             }
+             #index {
+                padding-top:200px;
+             }
+
+          }
+      </style>
 
   </head>
 

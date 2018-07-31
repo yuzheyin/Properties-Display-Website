@@ -22,7 +22,7 @@
           <div class="col-lg-3 col-md-4 col-xs-6">
                 <a href="{% url 'details' prop.id %}">
                     <div style="width:100%;">
-                    <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="object-fit: cover;">
+                    <img class="img-fluid" src="{%  url 'main_picture' prop.id %}" alt="NA" style="object-fit: cover;height:200px;">
                         <div style="background-color:#002053;opacity:0.65;width:100%;">
                     <p style="color:white; text-align:center;"> {{prop.address.street_number}} {{prop.address.route}}, {{prop.address.locality.city}}, {{prop.address.locality.state}} </p></div>
 
