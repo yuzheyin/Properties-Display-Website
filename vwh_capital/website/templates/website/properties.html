@@ -71,7 +71,7 @@
 
 								<div class="col-sm-3">
 									<label for="state" class="listing-search__label">Select State</label>
-									<select name="state" id="state" class="ht-field" data-dkcacheid="2">
+									<select name="state" id="state" class="ht-field" data-dkcacheid="2" style="width:100%">
 										{% if form.state == "" %}
 										<option value="" selected="">All State</option>
 										{% else %}
@@ -106,7 +106,7 @@
 
 									<div class="col-sm-3">
 										<label for="bedrooms" class="listing-search__label">Bedrooms</label>
-										<select name="bedrooms" id="bedrooms" class="ht-field" data-dkcacheid="4">
+										<select name="bedrooms" id="bedrooms" class="ht-field" data-dkcacheid="4" style="width:100%">
 											{% if form.bedrooms == "" or form.bedrooms == '0' %}
 											    <option value="0" selected="">Any</option>
 											{% else %}
@@ -123,7 +123,7 @@
 
 									<div class="col-sm-3">
 										<label for="bathrooms" class="listing-search__label">Bathrooms</label>
-										<select name="bathrooms" id="bathrooms" class="ht-field" data-dkcacheid="5">
+										<select name="bathrooms" id="bathrooms" class="ht-field" data-dkcacheid="5" style="width:100%">
 											{% if form.bathrooms == "" or form.bathrooms == '0' %}
 											    <option value="0" selected="">Any</option>
 											{% else %}
