@@ -49,7 +49,7 @@
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
-    <div id="page-content-wrapper" style="padding-left:100px;">
+    <div id="page-content-wrapper" style="padding-left:150px;">
         <!--<div class="container-fluid sticky-top" >-->
         <!--<a href="#menu-toggle" class="btn btn-primary" id="menu-toggle"> <i class="material-icons md-36">search</i> <br> Search</a>-->
         <!--</div>-->
@@ -114,7 +114,7 @@
                             <li style="background-color:#d9d9d9">  &nbsp;{{property.bedroom}}   &nbsp;Bedrooms</li>
                             <li>  &nbsp;{{property.bath}}   &nbsp; Bathrooms</li>
                             <li style="background-color:#d9d9d9">  &nbsp;{{property.total_room}}   &nbsp; Total rooms</li>
-                            <li>  &nbsp;{{property.size|intcomma}}   &nbsp;Sq Ft</li>
+                            <li>  &nbsp;{{property.size | floatformat |intcomma}}   &nbsp;Sq Ft</li>
                         </ul>
                         <div style="margin-left:80px;margin-top:120px;">
                             {% if is_added %}
@@ -144,7 +144,7 @@
             <!-- details -->
             <div class="single-property-header" style="margin-top:60px;">
                 <h1 class="property-title pull-left">VWH Price</h1>
-                <span class="property-price pull-right">$ {{property.list_price|intcomma}}</span>
+                <span class="property-price pull-right">$ {{property.list_price | floatformat |intcomma}}</span>
             </div>
 
             <div class="single-property-header" style="margin-top:30px;">
@@ -158,7 +158,7 @@
                         </span>
                         <span class="property-info-entry">
                             <span class="property-info-label">Lot size</span>
-                            <span class="property-info-value">{{property.lot_size}} <b class="property-info-unit">Acres</b></span>
+                            <span class="property-info-value">{{property.lot_size | floatformat}} <b class="property-info-unit">Acres</b></span>
                         </span>
                     </div>
 
@@ -170,7 +170,7 @@
                         </span>
                         <span class="property-info-entry">
                             <span class="property-info-label">Liveing Area</span>
-                            <span class="property-info-value">{{property.size|intcomma}}<b class="property-info-unit">Sq Ft</b></span>
+                            <span class="property-info-value">{{property.size | floatformat | intcomma}} <b class="property-info-unit"> Sq Ft</b></span>
                         </span>
                     </div>
 

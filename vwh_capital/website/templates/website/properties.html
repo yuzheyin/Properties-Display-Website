@@ -52,7 +52,7 @@
 
 	<!-- Page Content -->
 
-	<div id="page-content-wrapper" style="padding-left:100px;">
+	<div id="page-content-wrapper" style="padding-left:150px;">
 		<section class="main-search">
 			<div class="container">
 
@@ -286,13 +286,13 @@
 										<h3 class="listing__title" ><a href="{% url 'details' property.id %}" style="color:#002053">{{property.address}}</a></h3>
 										<p class="listing__location"></span> {{property.description}} </p>
 									</div><!-- .listing__header-primary -->
-									<p class="listing__price">$ {{property.list_price | intcomma}}</p>
+									<p class="listing__price">$ {{property.list_price | floatformat | intcomma }}</p>
 								</div><!-- .listing__header -->
 								<div class="listing__details">
 									<ul class="listing__stats">
 										<li><span class="listing__figure">{{property.bedroom}}<sup>+</sup></span> Bedroom(s)</li>
 										<li><span class="listing__figure">{{property.bath}}</span> Bath(s)</li>
-										<li><span class="listing__figure">{{property.size}}</span> sq.ft</li>
+										<li><span class="listing__figure">{{property.size | floatformat}}</span> sq.ft</li>
 									</ul><!-- .listing__stats -->
 									<a href="{% url 'details' property.id %}" class="listing__btn">Details <span class="listing__btn-icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
 								</div><!-- .listing__details -->
