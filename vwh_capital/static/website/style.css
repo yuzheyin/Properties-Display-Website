@@ -75,6 +75,8 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -2529,6 +2531,7 @@ textarea {
 }
 .listing img {
   width: 100%;
+  object-fit: cover;
 }
 .listing__logo {
   max-width: 100%;
@@ -4213,8 +4216,8 @@ textarea {
 /* 4.36. Listing Search / .listing-search
 ***********************/
 .main-search {
-  background-color: #f6f6f6;
-  margin-top: 80px;
+  background-color: #e6e6e6;
+
 }
 .main-search--static {
   padding-top: 0px;
@@ -4275,13 +4278,14 @@ textarea {
   width: 100%;
   margin-bottom: 20px;
   padding: 10px;
-  background-color: #007bff;
+
   color: #ffffff;
   border-radius: 4px;
   text-transform: uppercase;
   text-align: center;
   font-weight: 500;
 }
+
 .listing-search__field {
   height: 41px;
   margin-bottom: 20px;
@@ -4329,7 +4333,7 @@ textarea {
   padding: 10px 0 20px;
 }
 .listing-search__more-inner {
-  display: none;
+
 }
 .listing-search__more-btn {
   display: inline-block;
