@@ -57,9 +57,22 @@
         <!--<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">-->
       <style>
        @media screen and (min-width: 801px){
-       #page-content-wrapper {
+             #page-content-wrapper {
                 padding-left: 60px;
              }
+
+             #image-carousel {
+                width:66.66%;
+             }
+
+             #description {
+                width:33.33%;
+             }
+
+             #back {
+                display: none;
+             }
+
        }
 
           @media screen and (max-width: 800px){
@@ -67,10 +80,23 @@
                 display: none;
              }
 
+             #back {
+                display: block;
+             }
+
+             #image-carousel {
+                width:100%;
+             }
+
+             #description {
+                width:100%;
+             }
+
              #page-content-wrapper {
                 margin-left: 0px;
                 padding-left: 0;
              }
+
              #index {
                 padding-top:60px;
              }
@@ -151,6 +177,7 @@
         </div>
       </div>
       <div class="button-nav" style="align:right;">
+
           {% if not user.is_authenticated %}
               <a href="{% url 'login' %}"><button type="button" class="btn btn-primary btn-lg ">Login <i class="material-icons md-36">account_circle</i></button></a>
               <a href="{% url 'register' %}"><button type="button" class="btn btn-dark btn-lg ">sign up</button></a>
@@ -159,6 +186,11 @@
               <a href="{% url 'favorite' user.id %}"><button type="button" class="btn btn-primary btn-lg ">My collection <i class="material-icons md-36">folder_shared</i> </button></a>
               <a href="{% url 'logout' %}"><button type="button" class="btn btn-dark btn-lg ">Log out</button></a>
           {% endif %}
+          <div id="back">
+          <a href="{% url 'properties' %}?page=1" >
+              <button class="btn btn-link btn-lg">Properties List <i class="material-icons md-36">list</i></button>
+              </a>
+          </div>
 
       </div>
     </nav>
