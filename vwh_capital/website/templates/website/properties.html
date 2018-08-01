@@ -279,11 +279,12 @@
 							</a>
 						</div><!-- .item-grid__image-container -->
 
+                <small></small>
 						<div class="item-grid__content-container">
 							<div class="listing__content">
 								<div class="listing__header">
 									<div class="listing__header-primary col-md-9">
-										<h3 class="listing__title" ><a href="{% url 'details' property.id %}" style="color:#002053">{{property.address}}</a></h3>
+										<h3 class="listing__title" ><a href="{% url 'details' property.id %}" style="color:#002053">{{property.address.locality.city}}, {{property.address.locality.state}} {{property.address.locality.postal_code}}</a></h3>
 										<p class="listing__location"></span> {{property.description}} </p>
 									</div><!-- .listing__header-primary -->
 									<p class="listing__price">$ {{property.list_price | floatformat | intcomma }}</p>

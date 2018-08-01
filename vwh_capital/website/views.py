@@ -289,7 +289,7 @@ def properties(request):
     else:
         properties_all = properties_all.order_by('-creation_time')
 
-    most_viewed = Property.objects.order_by('-viewed_times')[:4]
+    most_viewed = Property.objects.order_by('-viewed_times')[:5]
 
     paginator = Paginator(properties_all, 4)
     page = request.GET.get('page', 1)
@@ -330,11 +330,11 @@ def details(request, id):
     property = Property.objects.get(id=id)
     property.viewed_times += 1
     property.save()
-    similar = Property.objects.filter(address__locality__state=property.address.locality.state).exclude(id=id)[:3]
+    similar = Property.objects.filter(address__locality__state=property.address.locality.state).exclude(id=id)[:4]
     pictures = property.pictures.all()
     profile = Profile.objects.get(user=request.user)
     c_list = profile.favorite_list.all()
-    most_viewed = Property.objects.order_by('-viewed_times')[:4]
+    most_viewed = Property.objects.order_by('-viewed_times')[:5]
     if property in c_list:
         is_added = True
     else:

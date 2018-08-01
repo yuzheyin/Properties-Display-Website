@@ -116,19 +116,30 @@
                             <li style="background-color:#d9d9d9">  &nbsp;{{property.total_room}}   &nbsp; Total rooms</li>
                             <li>  &nbsp;{{property.size | floatformat |intcomma}}   &nbsp;Sq Ft</li>
                         </ul>
-                        <div style="margin-left:80px;margin-top:120px;">
+                        <div style="margin-top:120px; text-align: center;">
                             {% if is_added %}
                             <form action="{% url 'remove_favorite' property.id %}" method="POST">
-                                <button  class="btn btn-primary" style="padding-right:20px;padding-top:10px;padding-bottom:10px;" > <i class="material-icons md-36">star_border</i> Remove From Collection</button>
+
+                                <button  class="btn btn-primary" style="padding-top:10px;padding-bottom:10px; width:70%;" > <i class="material-icons md-36">star_border</i> Remove From Collection</button>
+
                                 {% csrf_token %}
                             </form>
                             {% else %}
                             <form action="{% url 'add_favorite' property.id %}" method="POST">
-                                <button  class="btn btn-primary" style="padding-right:20px;padding-top:10px;padding-bottom:10px;"> <i class="material-icons md-36">star</i> Add to Collection</button>
+
+                                <button  class="btn btn-primary" style="padding-top:10px;padding-bottom:10px;width:70%;"> <i class="material-icons md-36">star</i> Add to Collection</button>
+
                                 {% csrf_token %}
                             </form>
                             {% endif %}
+
+                                <a href="http://www.zillow.com/homes/{{property.address.street_number}}-{{property.address.route}}-{{property.address.locality.city}}-{{property.address.locality.state}}-{{property.address.locality.postal_code}}_rb/">
+                                <button  class="btn btn-link" style="margin-top: 20px;padding-top:10px;padding-bottom:10px;width:70%;"> View on Zillow <i class="material-icons md-36">more</i></button></a>
                         </div>
+
+
+
+
                 </div>
 
             </div>
