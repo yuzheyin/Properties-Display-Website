@@ -406,3 +406,23 @@ def get_picture(request, id):
     image = picture.image
 
     return HttpResponse(image, content_type='image/png')
+
+
+@login_required
+@transaction.atomic
+def reset(requset):
+    response = HttpResponse('')
+    response.set_cookie(key='price_top', value="")
+    response.set_cookie(key='price_bottom', value="")
+    response.set_cookie(key='size_top', value="")
+    response.set_cookie(key='size_bottom', value="")
+    response.set_cookie(key='state', value="")
+    response.set_cookie(key='bedrooms', value="")
+    response.set_cookie(key='bathrooms', value="")
+    response.set_cookie(key='basement', value="")
+    response.set_cookie(key='garage', value="")
+    response.set_cookie(key='pool', value="")
+    response.set_cookie(key='sort', value="")
+    response.set_cookie(key='keywords', value="")
+
+    return response

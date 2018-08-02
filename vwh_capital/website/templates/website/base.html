@@ -184,7 +184,8 @@
           {% else %}
           <h4>Welcome, {{user.first_name}}<i class="material-icons md-36">account_circle</i></h4>
               <a href="{% url 'favorite' user.id %}"><button type="button" class="btn btn-primary btn-lg ">My collection <i class="material-icons md-36">folder_shared</i> </button></a>
-              <a href="{% url 'logout' %}"><button type="button" class="btn btn-dark btn-lg ">Log out</button></a>
+          <form action="{% url 'properties' %}" method="get" class="listing-search__form">
+              <a href="{% url 'logout' %}"><button type="button" class="btn btn-dark btn-lg " id="log_out">Log out</button></a>
           {% endif %}
           <div id="back">
           <a href="{% url 'properties' %}?page=1" >
@@ -227,6 +228,7 @@
 
     <script src="{% static 'custom.js' %}"></script>
     <script src="{% static 'plugins.js' %}"></script>
+ <div hidden id="hid"></div>
  <!-- Menu Toggle Script -->
     <script>
         $("#menu-toggle").click(function(e) {
@@ -234,6 +236,12 @@
             $("#wrapper").toggleClass("toggled");
         });
     </script>
+  <script>
+	$("#log_out").click(function(){
+		$.ajax('{% url 'reset' %}');
+	});
+
+</script>
 
 
   </body>
