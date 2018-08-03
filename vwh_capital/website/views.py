@@ -291,7 +291,7 @@ def properties(request):
 
     most_viewed = Property.objects.order_by('-viewed_times')[:5]
 
-    paginator = Paginator(properties_all, 4)
+    paginator = Paginator(properties_all, 6)
     page = request.GET.get('page', 1)
 
     try:
