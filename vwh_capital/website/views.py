@@ -504,8 +504,8 @@ def user_message(request, id):
     user_info = request.POST.get('name')
     email = request.POST.get('contact')
     message = request.POST.get('message')
-    email_body = "USER ID:       " + user + "\n" + "USER NAME:     " + user_info + "\n" + "CONTACT EMAIL:  " + email + \
-                 "\n" + "MESSAGE:  " + "\n\n" + message
+    email_body = "USER ID:       " + user + "\n\n" + "USER NAME:      " + user_info + "\n\n" + "CONTACT EMAIL:   " + email + \
+                 "\n\n" + "MESSAGE:  " + "\n\n" + message
 
     send_mail(subject="Customer inquiry",
               message=email_body,
