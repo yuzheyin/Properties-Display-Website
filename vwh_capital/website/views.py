@@ -12,6 +12,7 @@ from .models import *
 from django.db import transaction
 from django.db.models import Q
 from django.urls import reverse
+from django.contrib import messages
 from django.apps import apps
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, get_object_or_404
@@ -19,7 +20,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, update_session_auth_hash
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
 from django.core import serializers
@@ -99,6 +100,69 @@ def confirm_registration(request, username, token):
         context.update(cover)
     return render(request, 'website/index.html', context)
 
+
+@transaction.atomic
+def forget(request):
+    email = request.GET.get('email', False)
+    if not email:
+        return render(request, 'website/forget.html')
+    if request.GET['email'] == "" or not User.objects.filter(email=request.GET['email']).exists():
+        info = "The email address doesn't exist, please check and try again."
+        context = {'info': info}
+        return render(request, 'website/forget.html', context)
+
+    user = get_object_or_404(User, email=request.GET['email'])
+
+    # Generate a one-time use token and an email message body
+    token = default_token_generator.make_token(user)
+
+    email_body = """
+            Please click the link below to reset your account credential. (If you haven't requested this, please ignore this 
+            email and report to us):
+            http://{host}{path}
+            """.format(host=request.get_host(),
+                       path=reverse('reset_credential', args=(user.username, token)))
+
+    send_mail(subject="Reset Your Account Credential",
+              message=email_body,
+              from_email="alex.yin@vwhcapital.com",
+              recipient_list=[user.email])
+
+    return render(request, 'website/reset_confirmation.html')
+
+
+@transaction.atomic
+def reset_credential(request, username, token):
+    user = get_object_or_404(User, username=username)
+
+    # Send 404 error if token is invalid
+    if not default_token_generator.check_token(user, token):
+        raise Http404
+
+    form = SetPasswordForm()
+    return render(request, 'website/reset_credential.html', {'form': form, 'username': username, 'token': token})
+
+
+@transaction.atomic
+def commit_reset_credential(request, username, token):
+
+    if request.method == 'POST':
+        form = SetPasswordForm(request.POST)
+        user = get_object_or_404(User, username=username)
+        # Send 404 error if token is invalid
+        if not default_token_generator.check_token(user, token):
+            raise Http404
+        if form.is_valid():
+            new_password = form.cleaned_data['new_password2']
+            user.set_password(new_password)
+            user.save()
+            messages.success(request, "Your password was successfully updated.")
+            return redirect('login')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = SetPasswordForm()
+    return render(request, 'website/reset_credential.html', {'form': form, 'username': username, 'token': token})
 
 
 @transaction.atomic
@@ -277,7 +341,8 @@ def properties(request):
 
     if len(keywords) > 0:
         properties_all = properties_all.filter(Q(description__icontains=keywords) | Q(address__route__icontains=keywords)
-                                               | Q(address__locality__city__icontains=keywords)| Q(address__street_number__icontains=keywords)
+                                               | Q(address__locality__city__icontains=keywords)
+                                               | Q(address__street_number__icontains=keywords)
                                                | Q(address__locality__postal_code__icontains=keywords))
 
     if sort == 'most_view':
@@ -344,6 +409,7 @@ def details(request, id):
     return render(request, 'website/details.html', context)
 
 
+@transaction.atomic
 def home(request):
     most_viewed = Property.objects.order_by('-viewed_times')[1:4]
     new_added = Property.objects.order_by('-creation_time')[:3]
@@ -426,3 +492,24 @@ def reset(requset):
     response.set_cookie(key='keywords', value="")
 
     return response
+
+
+@login_required
+@transaction.atomic
+def user_message(request, id):
+    if request.method != 'POST':
+        return redirect('details', id=id)
+
+    user = request.user.username
+    user_info = request.POST.get('name')
+    email = request.POST.get('contact')
+    message = request.POST.get('message')
+    email_body = "USER ID:       " + user + "\n" + "USER NAME:     " + user_info + "\n" + "CONTACT EMAIL:  " + email + \
+                 "\n" + "MESSAGE:  " + "\n\n" + message
+
+    send_mail(subject="Customer inquiry",
+              message=email_body,
+              from_email="alex.yin@vwhcapital.com",
+              recipient_list=["yuzhe.yin@vwhcapital.com"])
+    messages.success(request, "Your message was successfully sent.")
+    return redirect('details', id=id)

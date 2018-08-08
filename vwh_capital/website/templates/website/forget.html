@@ -1,0 +1,24 @@
+{% extends "website/base.html" %}
+{% block content %}
+{% load staticfiles %}
+<div class="basic">
+    <div class="row justify-content-md-center" style="margin:100px;">
+
+        <div class="col-md-4 col-xs-12 register-blocks">
+        {% if info %}
+            <div class="row justify-content-md-center alert alert-danger" style="width:500px;"> {{info}}</div>
+        {% endif %}
+
+            <h2>Please enter the email attached to your account: </h2>
+            <form action="{% url 'forget' %}" method="get">
+                <input style="text" name="email">
+
+                {% csrf_token %}
+                <div class="text-center">
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -56,3 +56,25 @@ class FilterForm(forms.Form):
     keyword = forms.CharField(max_length=100, label="Keyword")
     city = forms.ChoiceField(choices=CITY_CHOICES, label="City", required=False)
     state = forms.ChoiceField(choices=STATE_CHOICES, label="State", required=False)
+
+
+class SetPasswordForm(forms.Form):
+    """
+    A form that lets a user change set their password without entering the old
+    password
+    """
+    error_messages = {
+        'password_mismatch': ("The two password fields didn't match."),
+        }
+    new_password1 = forms.CharField(label=("New password"),
+                                    widget=forms.PasswordInput)
+    new_password2 = forms.CharField(label=("New password confirmation"),
+                                    widget=forms.PasswordInput)
+
+    def clean_new_password2(self):
+        password1 = self.cleaned_data.get('new_password1')
+        password2 = self.cleaned_data.get('new_password2')
+        if password1 and password2:
+            if password1 != password2:
+                raise forms.ValidationError("Please confirm the passwords you entered.")
+        return password2

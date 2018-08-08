@@ -50,9 +50,13 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-        <!--<div class="container-fluid sticky-top" >-->
-        <!--<a href="#menu-toggle" class="btn btn-primary" id="menu-toggle"> <i class="material-icons md-36">search</i> <br> Search</a>-->
-        <!--</div>-->
+        {% if messages %}
+
+            {% for message in messages %}
+              <div class="row justify-content-md-center alert alert-success" style="width:500px;">{{ message }}</div>
+            {% endfor %}
+
+        {% endif %}
 
         <!-- Page Content -->
         <div class="container">
@@ -253,12 +257,6 @@
             </div>
             <!--&lt;!&ndash; .property-meta &ndash;&gt;-->
 
-            <!--<div class="single-property-header" style="margin-top:50px;">-->
-            <!--<h1 class="property-title ">Description</h1>-->
-            <!--<div class="s-property-content">-->
-            <!--<p>Nulla quis dapibus nisl. Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies                                </p>-->
-            <!--</div>-->
-            <!--</div>-->
             <!-- End description area  -->
 
             <div class="single-property-header" >
@@ -310,7 +308,7 @@
             <div class="single-property-header " >
                 <h3 class="property-title" style="margin: 60px 0px 50px;">Schedule A Visit</h3>
                 <div class="border border-secondary-top-bottom rounded" style="padding:20px 30px 20px;background-color:cccccc;">
-                    <form class="property__form">
+                    <form class="property__form" action="{% url 'user_message' property.id %}" method="post">
                         <div class="row">
 
                             <div class="col-sm-6">
@@ -326,6 +324,7 @@
                                 <input name="submit" class="property__form-submit" value="Submit" type="submit">
                             </div><!-- .col -->
                         </div><!-- .row -->
+                        {% csrf_token %}
                     </form>
                 </div>
             </div>

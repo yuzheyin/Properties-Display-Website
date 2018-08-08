@@ -2,12 +2,23 @@
 {% block content %}
 {% load staticfiles %}
 {% load myfilters %}
-<div class="basic">
-    <div class="row justify-content-md-center" style="margin:95px;">
+
+
+
+<div class="basic" style="margin:100px;">
+
+    <div class="row justify-content-md-center" >
+    {% if messages %}
+
+        {% for message in messages %}
+          <div class="row justify-content-md-center alert alert-success" style="width:500px;">{{ message }}</div>
+        {% endfor %}
+
+    {% endif %}
         <div class="col-md-4 col-xs-12 login-blocks">
             <h2>Login : </h2>
             {%if form.errors %}
-                <p>There is something wrong with the username or the password, please try again.</p>
+                <div class="row justify-content-md-center alert alert-danger" style="width:500px;">There is something wrong with the username or the password, please try again.</div>
             {% endif %}
             <form action="{% url 'login' %}" method="post">
                 <div class="form-group">
@@ -26,6 +37,7 @@
 
 
             </form>
+            <a href="{% url 'forget' %}"> <button type="submit" class="btn btn-secondary">Forget Password or Username</button></a>
             <br>
 
             <!--<h2>Social login :  </h2>-->
