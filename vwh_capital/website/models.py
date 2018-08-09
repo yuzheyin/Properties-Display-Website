@@ -1,14 +1,11 @@
+"""
+@Author Yuzhe Yin
+@Date 06/15/2018
+VWH property listing website
+"""
 from django.db import models
 from django.contrib.auth.models import User
 from .choices import *
-
-
-# class State(models.Model):
-#     name = models.CharField(max_length=165, blank=True, choices=STATE_CHOICES)
-#     code = models.CharField(max_length=3, blank=True)
-#
-#     def to_str(self):
-#         return '%s' % (self.name or self.code)
 
 
 class Locality(models.Model):

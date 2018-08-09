@@ -1,3 +1,8 @@
+"""
+@Author Yuzhe Yin
+@Date 06/15/2018
+VWH property listing website
+"""
 from django import forms
 from .models import *
 from .choices import *

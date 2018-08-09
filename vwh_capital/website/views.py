@@ -1,9 +1,9 @@
-from django.shortcuts import render, get_object_or_404,redirect
+"""
+@Author Yuzhe Yin
+@Date 06/15/2018
+VWH property listing website
+"""
 
-# Create your views here.
-from django.apps import apps
-from django.http import Http404, HttpRequest, HttpResponse
-# from vwh_capital.website.models import *
 from django.contrib.auth.tokens import default_token_generator
 # Used to send mail from within Django
 from django.core.mail import send_mail
@@ -13,8 +13,6 @@ from django.db import transaction
 from django.db.models import Q
 from django.urls import reverse
 from django.contrib import messages
-from django.apps import apps
-from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, redirect
@@ -22,8 +20,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, update_session_auth_hash
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.utils import timezone
-from django.core import serializers
+
 
 
 @transaction.atomic
@@ -304,9 +301,6 @@ def properties(request):
         sort = request.COOKIES.get('sort')
     else:
         sort = 'time'
-
-    # properties_all = Property.objects.filter(list_price__gte=int(price_bottom), list_price__lte=int(price_top),
-    #                                          size__lte=int(size_top), size__gte=int(size_bottom))
 
     properties_all = Property.objects.all()
     if int(price_bottom) != 10000:
