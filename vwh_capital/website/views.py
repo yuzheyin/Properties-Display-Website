@@ -156,7 +156,7 @@ def commit_reset_credential(request, username, token):
             new_password = form.cleaned_data['new_password2']
             user.set_password(new_password)
             user.save()
-            messages.success(request, "Your password was successfully updated.")
+            messages.success(request, "Your password has been successfully updated.")
             return redirect('login')
         else:
             messages.error(request, 'Please correct the error below.')
@@ -504,12 +504,13 @@ def user_message(request, id):
     user_info = request.POST.get('name')
     email = request.POST.get('contact')
     message = request.POST.get('message')
+    property = Property.objects.get(id=id).address
     email_body = "USER ID:       " + user + "\n\n" + "USER NAME:      " + user_info + "\n\n" + "CONTACT EMAIL:   " + email + \
-                 "\n\n" + "MESSAGE:  " + "\n\n" + message
+                 "\n\n" + "PROPERTY ADDRESS:     " + str(property) + "\n\n" + "PROPERTY ID:     " + id + "\n\n" + "MESSAGE:  " + "\n\n" + message
 
     send_mail(subject="Customer inquiry",
               message=email_body,
               from_email="alex.yin@vwhcapital.com",
               recipient_list=["yuzhe.yin@vwhcapital.com"])
-    messages.success(request, "Your message was successfully sent.")
+    messages.success(request, "Your message has been successfully sent.")
     return redirect('details', id=id)

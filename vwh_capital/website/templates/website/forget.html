@@ -2,19 +2,19 @@
 {% block content %}
 {% load staticfiles %}
 <div class="basic">
-    <div class="row justify-content-md-center" style="margin:100px;">
-
-        <div class="col-md-4 col-xs-12 register-blocks">
+    <div class="row justify-content-md-center" style="margin:150px 0;">
         {% if info %}
-            <div class="row justify-content-md-center alert alert-danger" style="width:500px;"> {{info}}</div>
+            <div class="col-md-9 alert alert-danger" > {{info}}</div>
         {% endif %}
+        <div class="col-md-4 col-xs-12 register-blocks">
 
-            <h2>Please enter the email attached to your account: </h2>
+
+            <h3>Please enter the email address attached to your account: </h3>
             <form action="{% url 'forget' %}" method="get">
-                <input style="text" name="email">
+                <input type="text" name="email" style="margin: 20px 0px 20px;">
 
                 {% csrf_token %}
-                <div class="text-center">
+                <div class="text-center"  style="margin: 0px 0px 50px;">
                     <button type="submit" class="btn btn-dark">Submit</button>
                 </div>
             </form>

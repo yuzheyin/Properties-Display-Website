@@ -50,17 +50,17 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-        {% if messages %}
 
-            {% for message in messages %}
-              <div class="row justify-content-md-center alert alert-success" style="width:500px;">{{ message }}</div>
-            {% endfor %}
-
-        {% endif %}
 
         <!-- Page Content -->
         <div class="container">
+            {% if messages %}
 
+                {% for message in messages %}
+                  <div class="row justify-content-md-center alert alert-success" style="width:500px;">{{ message }}</div>
+                {% endfor %}
+
+            {% endif %}
             <!-- Portfolio Item Heading -->
             <h1 class="my-4" style="color:#002053">{{property.address.street_number}} {{property.address.route}}, {{property.address.locality.city}}, {{property.address.locality.state}}
                 <small>{{property.address.locality.postal_code}}</small>
